@@ -8,8 +8,8 @@
 <h2>Welcome, <%= @user.username %>!</h2>
 
 <p>You have tried <%= @beers.count %> beers from <%= @breweries.count %> different breweries!</p>
-<!-- link_to users_beer_url to view all beers logged by user -->
-
 <%= link_to "View Your Beers", user_beers_url(@user) %>
 
-<%= link_to "Update Account Info", edit_user_path(@user) %> | <%= link_to "Delete Account", destroy_user_path(@user) %>
+<br>
+
+<%= link_to "Update Account Info", edit_user_path(@user) %> | <%= link_to "Log Out", logout_path %>
