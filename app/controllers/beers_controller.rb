@@ -3,6 +3,21 @@ class BeersController < ApplicationController
   before_action :set_user
   before_action :set_beer, only: %i[show edit update destroy]
 
+  def new
+    @beer = Beer.new
+    @beer.brewery.build
+  end
+
+  def create
+    @brewery = Brewery.create(params[:brewery_attributes])
+    @beer = Beer.create(beer_params)
+    if @beer.save
+      redirect_to user_beers_url(@user)
+    else
+      render :new
+    end
+  end
+
   private
 
   def set_user
