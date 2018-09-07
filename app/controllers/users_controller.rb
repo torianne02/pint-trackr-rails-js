@@ -10,7 +10,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       session[:user_id] = @user.id
-      redirect_to user_path(@user), notice: "Welcome to PintTrackr, #{@user.username}!"
+      redirect_to user_path(@user), notice: "Welcome to PintTrackr!"
     else
       redirect_to root_path
     end
@@ -18,6 +18,7 @@ class UsersController < ApplicationController
 
   def show
     @beers = @user.beers
+    @breweries = @beers.breweries
   end
 
   def edit
