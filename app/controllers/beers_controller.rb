@@ -5,7 +5,7 @@ class BeersController < ApplicationController
 
   def index
     if current_user
-      @beers = Beers.all
+      @beers = @user.beers
     else
       redirect_to root_path
     end

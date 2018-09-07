@@ -1,0 +1,7 @@
+Name: <%= @beer.name %>
+Type of Beer: <%= @beer.beer_type %>
+Brewery: <%= link_to "#{@beer.brewery.name}", brewery_path(@beer.brewery) %>
+IBU: <%= @beer.ibu %>
+ABV: <%= @beer.abv %>
+
+<p><%= @beer.users.count %> user(s) have tried this beer!</p>
