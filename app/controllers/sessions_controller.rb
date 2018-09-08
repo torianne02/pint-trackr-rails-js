@@ -7,20 +7,21 @@ class SessionsController < ApplicationController
     @user = User.find_by(username: params[:username])
     if @user && @user.authenticate(params[:password])
       session[:user_id] = @user.id
-      redirect_to user_path(@user)
+      redirect_to user_beers_path(@user)
     else
       render :new, notice: 'Username and/or password are incorrect.'
     end
   end
 
   def create_from_oath
+    puts auth
     @user = User.find_or_create_by(uid: auth['uid']) do |u|
       u.username = auth['info']['name']
       u.email = auth['info']['email']
     end
-
+    @user.save!(:validate => false)
     session[:user_id] = @user.id
-    redirect_to user_path(@user)
+    redirect_to user_beers_path(@user)
   end
 
   def destroy
