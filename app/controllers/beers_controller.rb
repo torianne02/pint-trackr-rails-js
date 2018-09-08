@@ -1,4 +1,3 @@
-# show needs @beers = Beer.all
 class BeersController < ApplicationController
   before_action :set_user
   before_action :set_beer, only: %i[show edit update destroy]
