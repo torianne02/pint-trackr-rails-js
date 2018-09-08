@@ -1,4 +1,5 @@
 class SessionsController < ApplicationController
+  before_action :current_user, except: %i[new create create_from_oath]
   def new
     @user = User.new
   end

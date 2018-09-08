@@ -12,7 +12,7 @@ class BeersController < ApplicationController
 
   def new
     @beer = Beer.new
-    @beer.brewery.build
+    @brewery = Brewery.new
   end
 
   def create
@@ -59,7 +59,7 @@ class BeersController < ApplicationController
       :name,
       :beer_type,
       :ibu,
-      :ebv,
+      :abv,
       :user_id,
       brewery_attributes: %i[name location id]
     )
