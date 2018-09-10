@@ -18,7 +18,7 @@ class UsersController < ApplicationController
 
   def show
     @beers = @user.beers
-    @breweries = @beers.breweries
+    @breweries = @user.breweries
   end
 
   def edit
