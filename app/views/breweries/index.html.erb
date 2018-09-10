@@ -4,6 +4,6 @@
   <% @breweries.each do |brewery| %>
     Name: <%= link_to "#{brewery.name}", brewery_path(brewery) %>
     Location: <%= brewery.location %>
-    <%= brewery.beers.users.count %> user(s) have logged <%= brewery.beers.count %> beer(s) distributed by this brewery!
+    There are <%= brewery.beers.count %> beer(s) distributed by this brewery!
   <% end %>
 </div>
