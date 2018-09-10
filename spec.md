@@ -7,17 +7,17 @@ Specs:
 - [x] Include at least one has_many through relationship (User has_many Breweries through (drinking) Beer - - Brewery has_many Users through (selling/creating) Beer)
 - [x] The "through" part of the has_many through includes at least one user submittable attribute (Beer has 4 submittable attributes: name, beer_type, ibu, abv)
 - [x] Include reasonable validations for simple model objects (User, Beer, and Brewery all have simple validations)
-- [ ] Include a class level ActiveRecord scope method (model object & class method name and URL to see the working feature e.g. User.most_recipes URL: /users/most_recipes)
-- [ ] Include signup (how e.g. Devise)
-- [ ] Include login (how e.g. Devise)
-- [ ] Include logout (how e.g. Devise)
-- [ ] Include third party signup/login (how e.g. Devise/OmniAuth)
-- [ ] Include nested resource show or index (URL e.g. users/2/recipes)
-- [ ] Include nested resource "new" form (URL e.g. recipes/1/ingredients)
-- [ ] Include form display of validation errors (form URL e.g. /recipes/new)
+- [x] Include a class level ActiveRecord scope method (User.beers URL: /user/:id/beers)
+- [x] Include signup (post '/users/new', to: 'users#create')
+- [x] Include login (get '/signin', to: 'sessions#new')
+- [x] Include logout (get '/logout', to: 'sessions#destroy')
+- [x] Include third party signup/login (get '/auth/facebook/callback' => 'sessions#create_from_oath')
+- [x] Include nested resource show or index (users/:id/beers)
+- [x] Include nested resource "new" form (users/:id/beers/new)
+- [x] Include form display of validation errors (all forms include errors)
 
 Confirm:
-- [ ] The application is pretty DRY
-- [ ] Limited logic in controllers
-- [ ] Views use helper methods if appropriate
-- [ ] Views use partials if appropriate
+- [x] The application is pretty DRY
+- [x] Limited logic in controllers
+- [x] Views use helper methods if appropriate(current_user used)
+- [x] Views use partials if appropriate(render forms)
