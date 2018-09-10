@@ -1,8 +1,11 @@
+<h1><%= @brewery.name %></h1>
+<h3><%= @brewery.location %></h3>
+
 <div>
   <% @beers.each do |beer| %>
-    Name: <%= beer.name %>
-    Type of Beer: <%= beer.beer_type %>
-    IBU: <%= beer.ibu %>
-    ABV: <%= beer.abv %>
+    Name: <%= beer.name %><br>
+    Type of Beer: <%= beer.beer_type %><br>
+    IBU: <%= beer.ibu %><br>
+    ABV: <%= beer.abv %><br><br>
   <% end %>
 </div>
