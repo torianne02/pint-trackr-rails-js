@@ -2,10 +2,17 @@
 
 <div>
   <% @beers.each do |beer| %>
-    Name: <%= link_to "#{beer.name}", beer_path(beer.name) %>
-    Brewery: <%= link_to "#{beer.brewery.name}", beer_path(beer.brewery.name) %>
+    Name: <%= beer.name %>
+    <br>
+    Brewery: <%= link_to "#{beer.brewery.name}", brewery_path(beer.brewery.id) %>
+    <br>
     Type of Beer: <%= beer.beer_type %>
+    <br>
     IBU: <%= beer.ibu %>
+    <br>
     ABV: <%= beer.abv %>
+    <br><br>
   <% end %>
 </div>
+
+<%= link_to "Add New Beer", new_user_beer_path %>
