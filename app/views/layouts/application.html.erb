@@ -7,9 +7,14 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <!-- <nav>
+      <a href="/breweries">View All Breweries</a> |
+      <%= link_to "Log Out", logout_path %>
+    </nav> -->
   </head>
 
   <body>
+    <h1>PintTrackr</h1>
     <%= yield %>
   </body>
 </html>
