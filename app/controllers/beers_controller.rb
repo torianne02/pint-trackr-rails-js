@@ -7,12 +7,12 @@ class BeersController < ApplicationController
   end
 
   def new
-    @beer = Beer.new
+    @beer = Beer.new(user_id: params[:user_id])
     @brewery = Brewery.new
   end
 
   def create
-    @brewery = Brewery.create(params[:brewery_attributes])
+    @brewery = Brewery.find_or_create_by(params[:brewery_attributes])
     @beer = Beer.create(beer_params)
     if @beer.save
       redirect_to user_beers_url(@user)

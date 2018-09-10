@@ -32,6 +32,8 @@ gem 'omniauth'
 gem 'omniauth-facebook'
 # Ensures environment variables are correctly loaded
 gem 'dotenv-rails'
+# Pry
+gem 'pry'
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
