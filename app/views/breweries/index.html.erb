@@ -1,9 +1,0 @@
-<h2>Choose a Brewery to Explore!</h2>
-
-<div>
-  <% @breweries.each do |brewery| %>
-    Name: <%= link_to "#{brewery.name}", brewery_path(brewery) %><br>
-    Location: <%= brewery.location %><br>
-    There are <%= brewery.beers.count %> beer(s) distributed by this brewery!<br><br>
-  <% end %>
-</div>

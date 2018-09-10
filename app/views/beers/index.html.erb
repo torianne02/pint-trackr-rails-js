@@ -11,6 +11,8 @@
     IBU: <%= beer.ibu %>
     <br>
     ABV: <%= beer.abv %>
+    <br>
+    <%= link_to "Edit Beer", edit_user_beer_url(@user, beer) %> | <%= link_to "Delete", user_beer_url(@user, beer), method: :delete %>
     <br><br>
   <% end %>
 </div>
