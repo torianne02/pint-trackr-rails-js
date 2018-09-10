@@ -4,6 +4,7 @@ Rails.application.routes.draw do
     resources :beers
   end
   resources :breweries
+  resources :beers, only: [:show]
 
   get '/signin', to: 'sessions#new'
   post '/sessions', to: 'sessions#create'

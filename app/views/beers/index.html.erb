@@ -2,7 +2,7 @@
 
 <div>
   <% @beers.each do |beer| %>
-    Name: <%= beer.name %>
+    Name: <%= link_to "#{beer.name}", beer_path(beer.id) %>
     <br>
     Brewery: <%= link_to "#{beer.brewery.name}", brewery_path(beer.brewery.id) %>
     <br>
