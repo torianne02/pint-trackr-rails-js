@@ -4,6 +4,7 @@ class BreweriesController < ApplicationController
   end
 
   def show
-    @beers = Brewery.beers
+    @brewery = Brewery.find_by(id: params[:id])
+    @beers = @brewery.beers
   end
 end

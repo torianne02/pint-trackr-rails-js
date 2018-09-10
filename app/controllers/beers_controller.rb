@@ -3,11 +3,7 @@ class BeersController < ApplicationController
   before_action :set_beer, only: %i[show edit update destroy]
 
   def index
-    if current_user
-      @beers = @user.beers
-    else
-      redirect_to root_path
-    end
+    @beers = @user.beers
   end
 
   def new
