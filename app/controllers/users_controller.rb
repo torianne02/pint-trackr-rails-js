@@ -12,7 +12,7 @@ class UsersController < ApplicationController
       session[:user_id] = @user.id
       redirect_to user_url(@user), notice: "Welcome to PintTrackr!"
     else
-      redirect_to root_path
+      render :new, notice: "Please fill out all criteria."
     end
   end
 

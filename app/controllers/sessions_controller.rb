@@ -27,7 +27,7 @@ class SessionsController < ApplicationController
 
   def destroy
     session.delete :user_id
-    redirect_to root_url
+    redirect_to root_url, notice: "You have successfully logged out."
   end
 
   private

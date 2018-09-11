@@ -17,6 +17,13 @@
 
   <body>
     <h1>PintTrackr</h1>
+
+    <p><%= notice %></p>
+
+    <% if @message %>
+      <p><%= @message %></p>
+    <% end %>
+    
     <%= yield %>
   </body>
 </html>
