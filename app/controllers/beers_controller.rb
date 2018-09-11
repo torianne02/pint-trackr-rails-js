@@ -12,7 +12,7 @@ class BeersController < ApplicationController
   end
 
   def create
-    @brewery = Brewery.find_or_create_by(params[:brewery_attributes])
+    @brewery = Brewery.find_or_create_by(beer_params[:brewery_attributes])
     @beer = Beer.create(beer_params)
     @beer.brewery_id = @brewery.id
     if @beer.save
@@ -58,7 +58,7 @@ class BeersController < ApplicationController
       :ibu,
       :abv,
       :user_id,
-      brewery_attributes: %i[name location id]
+      brewery_attributes: %i[name location]
     )
   end
 end
