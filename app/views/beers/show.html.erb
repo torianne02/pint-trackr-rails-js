@@ -1,9 +1,10 @@
-<h3><%= link_to "#{@beer.brewery.name}", brewery_path(@beer.brewery) %>'s <%= @beer.name %></h3>
+<h3><%= @beer.brewery.name %>'s <%= @beer.name %></h3>
 Type of Beer: <%= @beer.beer_type %><br>
 IBU: <%= @beer.ibu %><br>
 ABV: <%= @beer.abv %><br>
 Drank by: <%= @beer.user.username %><br>
 
 <% if current_user.id == @beer.user_id %>
-  <%= link_to "Delete", user_beer_url(@user, @beer), method: :delete %>
+  <%= link_to "Delete", user_beer_url(@user, @beer), method: :delete %> |
+  <%= link_to "Edit Beer", edit_user_beer_url(@user, @beer) %>
 <% end %>
