@@ -5,4 +5,5 @@ class Beer < ActiveRecord::Base
   # has_many :users -- changes for future versions
 
   validates :name, :beer_type, :ibu, :abv, :presence => true
+  scope :highest_ibu, -> {order(ibu: :desc)}
 end
