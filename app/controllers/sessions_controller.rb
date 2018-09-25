@@ -10,7 +10,7 @@ class SessionsController < ApplicationController
       session[:user_id] = @user.id
       redirect_to user_beers_path(@user)
     else
-      render :new, notice: 'Username and/or password are incorrect.'
+      redirect_to signin_path, notice: 'Username and/or password are incorrect.'
     end
   end
 
