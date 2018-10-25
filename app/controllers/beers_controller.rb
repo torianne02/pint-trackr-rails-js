@@ -58,7 +58,7 @@ class BeersController < ApplicationController
       :ibu,
       :abv,
       :user_id,
-      brewery_attributes: %i[name location]
+      brewery_attributes: %i[name city state]
     )
   end
 end
