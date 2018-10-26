@@ -3,7 +3,6 @@ Rails.application.routes.draw do
   resources :users do
     resources :beers
   end
-  resources :breweries
   resources :beers, only: [:show]
 
   get '/signin', to: 'sessions#new'
