@@ -4,6 +4,9 @@ class BeersController < ApplicationController
 
   def index
     @beers = @user.beers.highest_ibu
+    render json: @beers.to_json(only: [:name, :beer_type, :abv, :ibu, :id],
+                              include: [brewery: { only: [:name, :city, :state] }],
+                              include: [user: { only: [:username] }])
   end
 
   def new
@@ -34,6 +37,10 @@ class BeersController < ApplicationController
   end
 
   def show
+    @beer = Beer.find(params[:id])
+    render json: @beer.to_json(only: [:name, :beer_type, :abv, :ibu, :id],
+                              include: [brewery: { only: [:name, :city, :state] }],
+                              include: [user: { only: [:username] }])
   end
 
   def destroy
