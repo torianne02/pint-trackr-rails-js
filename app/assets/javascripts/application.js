@@ -10,7 +10,12 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+//= require jquery
+//= require beers
+//= require breweries
+//= require users
 //= require rails-ujs
+//= require jquery_ujs
 //= require activestorage
 //= require turbolinks
 //= require_tree .
