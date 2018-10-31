@@ -17,41 +17,14 @@
   <% end %>
 </div>
 
-<!-- trying to figure out form since rendering old form isn't working -->
-
-<!-- <%= form_with(model: @user, model: @beer) do |f| %>
-  <%= f.hidden_field :user_id %>
-
-  <label>Name:</label>
-  <%= f.text_field :name %>
-  <br><br>
-
-  <%= f.fields_for :brewery, @brewery do |b_field| %>
-    <label>Brewery Name:</label>
-    <%= b_field.text_field :name %>
-    <br><br>
-
-    <label>Brewery Location:</label>
-    <br><br>
-    <label>City</label>
-    <%= b_field.text_field :city %>
-    <br>
-    <label>State</label>
-    <%= b_field.text_field :state %>
-  <% end %>
-  <br><br>
-
-  <label>Type of Beer:</label>
-  <%= f.text_field :beer_type %>
-  <br><br>
-
-  <label>IBU:</label>
-  <%= f.text_field :ibu %>
-  <br><br>
-
-  <label>ABV:</label>
-  <%= f.text_field :abv %>
-  <br><br>
-
-  <%= f.submit %>
-<% end %> -->
+<form id="beer-form">
+  Name: <input type="text" name="name"><br>
+  Brewery: <input type="text" name="brewery_name"><br>
+  Brewery Location <br>
+  City: <input type="text" name="brewery_city"><br>
+  State: <input type="text" name="brewery_state"><br>
+  Type of Beer: <input type="text" name="beer_type"><br>
+  IBU: <input type="text" name="ibu"><br>
+  ABV: <input type="text" name="abv"><br>
+  <button type="submit">Create Beer</button>
+</form>

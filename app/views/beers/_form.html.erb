@@ -1,4 +1,4 @@
-<%= form_for (@user, @beer) do |f| %>
+<%= form_for(@user, @beer) do |f| %>
   <% if @beer.errors.any? %>
     <div id="error_explanation">
       <h2>
@@ -25,12 +25,7 @@
     <br><br>
 
     <label>Brewery Location:</label>
-    <br><br>
-    <label>City</label>
-    <%= b_field.text_field :city %>
-    <br>
-    <label>State</label>
-    <%= b_field.text_field :state %>
+    <%= b_field.text_field :location %>
   <% end %>
   <br><br>
 
