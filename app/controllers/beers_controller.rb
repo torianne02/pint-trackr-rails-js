@@ -4,7 +4,11 @@ class BeersController < ApplicationController
 
   def index
     @beers = @user.beers.highest_ibu
-    render json: @beers, status: 200
+    @beer = Beer.new(user_id: params[:user_id])
+    @brewery = Brewery.new
+    # form won't work due to @beer is empty
+      # "first argument in form cannot contain nil or be empty"
+    # render json: @beers, status: 200
   end
 
   def new

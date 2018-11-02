@@ -12,19 +12,13 @@
     <br>
     ABV: <%= beer.abv %>
     <br>
-    <%= link_to "Edit Beer", edit_user_beer_url(@user, beer) %> | <%= link_to "Delete", user_beer_url(@user, beer), method: :delete %>
+    <%= link_to "Edit Beer", edit_beer_path(beer) %> | <%= link_to "Delete", beer_path(beer), method: :delete %>
     <br><br>
   <% end %>
 </div>
 
-<form id="beer-form">
-  Name: <input type="text" name="name"><br>
-  Brewery: <input type="text" name="brewery_name"><br>
-  Brewery Location <br>
-  City: <input type="text" name="brewery_city"><br>
-  State: <input type="text" name="brewery_state"><br>
-  Type of Beer: <input type="text" name="beer_type"><br>
-  IBU: <input type="text" name="ibu"><br>
-  ABV: <input type="text" name="abv"><br>
-  <button type="submit">Create Beer</button>
-</form>
+<div id="new-beer">
+  <h3>Add New Beer</h3>
+  <form id="new-beer-form">
+    <%= render 'form' %>
+  </form>
