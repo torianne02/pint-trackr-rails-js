@@ -9,7 +9,7 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <nav>
       <% if current_user %>
-        <%= link_to "View All Your Beers", user_url(current_user) %> |
+        <%= link_to "View All Your Beers", beers_url %> |
         <%= link_to "Log Out", logout_path %>
       <% end %>
     </nav>
