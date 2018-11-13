@@ -24,6 +24,10 @@ $(function() {
       }
     }
 
+    // not sure where this all goes in terms of scope:
+    // form = $('#new-beer-form')
+    // formData = new FormData(form)
+
     fetch(url, {
       method: 'POST',
       body: JSON.stringify(formData)
