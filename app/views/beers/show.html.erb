@@ -5,6 +5,6 @@ ABV: <%= @beer.abv %><br>
 Drank by: <%= @beer.user.username %><br>
 
 <% if current_user.id == @beer.user_id %>
-  <%= link_to "Delete", user_beer_url(@user, @beer), method: :delete %> |
-  <%= link_to "Edit Beer", edit_user_beer_url(@user, @beer) %>
+  <%= link_to "Delete", beer_url(@beer), method: :delete %> |
+  <%= link_to "Edit Beer", edit_beer_url(@beer) %>
 <% end %>

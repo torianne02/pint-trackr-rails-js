@@ -21,7 +21,7 @@ class BeersController < ApplicationController
     @beer = Beer.create(beer_params)
     @beer.brewery_id = @brewery.id
     if @beer.save
-      redirect_to user_beers_url(@user), notice: "Beer successfully created."
+      redirect_to beers_url, notice: "Beer successfully created."
     else
       render :new
     end
@@ -32,7 +32,7 @@ class BeersController < ApplicationController
 
   def update
     if @beer.update(beer_params)
-      redirect_to user_beers_url(@user), notice: "Beer successfully updated."
+      redirect_to beers_url, notice: "Beer successfully updated."
     else
       render :edit
     end
@@ -45,7 +45,7 @@ class BeersController < ApplicationController
 
   def destroy
     @beer.destroy
-    redirect_to user_beers_url(@user), notice: "Beer successfully deleted."
+    redirect_to beers_url, notice: "Beer successfully deleted."
   end
 
   private
