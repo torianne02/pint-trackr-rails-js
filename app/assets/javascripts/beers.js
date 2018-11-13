@@ -12,7 +12,7 @@ function Beer(name, beer_type, ibu, abv, brewery_id, user_id) {
 $(function() {
   $('#new-beer-form').on("submit", function(e) {
     e.preventDefault();
-    let formData = {
+    let formData = new FormData({
       name: 'name',
       beer_type: 'beer_type',
       ibu: 'IBU',
@@ -22,17 +22,21 @@ $(function() {
         city: 'brewrery_city',
         state: 'brewery_state'
       }
-    }
+    })
 
     // not sure where this all goes in terms of scope:
     // form = $('#new-beer-form')
     // formData = new FormData(form)
 
+    const url = 'http://localhost:3000/beers'
+    const token = document.getElementsByName("authenticity_token")[0].value
+
     fetch(url, {
       method: 'POST',
-      body: JSON.stringify(formData)
+      body: JSON.stringify(formData),
       headers: {
-        Authorization: `token ${token}`
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${token}`
       }
     })
       .then(res => res.json())
