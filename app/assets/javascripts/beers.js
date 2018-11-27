@@ -24,10 +24,6 @@ $(function() {
       }
     })
 
-    // not sure where this all goes in terms of scope:
-    // form = $('#new-beer-form')
-    // formData = new FormData(form)
-
     const url = 'http://localhost:3000/beers'
     const token = document.getElementsByName("authenticity_token")[0].value
 

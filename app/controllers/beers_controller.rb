@@ -8,6 +8,10 @@ class BeersController < ApplicationController
     @brewery = Brewery.new
     # form won't work due to @beer is empty
       # "first argument in form cannot contain nil or be empty"
+    respond_to do |format|
+      format.html
+      format.json { render json: @beers }
+    end
     # render json: @beers, status: 200
   end
 
