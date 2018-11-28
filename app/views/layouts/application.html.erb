@@ -7,9 +7,10 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <nav>
+    <nav align="right">
       <% if current_user %>
         <%= link_to "View All Your Beers", beers_url %> |
+        <%= link_to "Profile", user_path(@user) %> |
         <%= link_to "Log Out", logout_path %>
       <% end %>
     </nav>
