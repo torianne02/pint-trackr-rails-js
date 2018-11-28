@@ -39,7 +39,10 @@ class BeersController < ApplicationController
 
   def show
     @beer = Beer.find_by(id: params[:id])
-    render json: @beer, status: 200
+    respond_to do |format|
+      format.html
+      format.json { render json: @beers }
+    end
   end
 
   def destroy

@@ -8,16 +8,9 @@ function Beer(name, beer_type, ibu, abv, brewery_id, user_id) {
   this.user_id = user_id
 }
 
-// successFunction - new beer
+// success function - new beer
 function newBeer(json) {
   const beer = new Beer(json)
-  const newBeerTemp = beer.renderBeer()
-  $('div#add_beer').html(newBeerTemp)
-}
-
-// compile new beer
-Beer.prototype.renderBeer = function() {
-  return Beer.templateNewBeer(this)
 }
 
 // Submit form using AJAX
@@ -28,9 +21,9 @@ $(function() {
        url: this.action,
        method: "POST",
        data: $( this ).serialize(),
-       processData: false,
        success: function(response){
-         newBeer(response)
+         newBeer(response);
+         alert("success");
        }
     })
     // let formData = new FormData({
