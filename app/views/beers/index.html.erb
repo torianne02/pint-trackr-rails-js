@@ -18,7 +18,7 @@
 </div>
 
 <div id="new-beer">
-  <h3>Add New Beer</h3>
+  <h3>New Beer</h3>
   <form id="new-beer-form">
-    <%= render 'form' %>
+    <%= render partial: 'form', locals: {beer: @beer = Beer.new, brewery: @brewery = Brewery.new} %>
   </form>
