@@ -1,10 +1,12 @@
-<h3><%= @beer.brewery.name %>'s <%= @beer.name %></h3>
-Type of Beer: <%= @beer.beer_type %><br>
-IBU: <%= @beer.ibu %><br>
-ABV: <%= @beer.abv %><br>
-Drank by: <%= @beer.user.username %><br>
+<div id="show_beer">
+  <h3><%= @beer.brewery.name %>'s <%= @beer.name %></h3>
+  Type of Beer: <%= @beer.beer_type %><br>
+  IBU: <%= @beer.ibu %><br>
+  ABV: <%= @beer.abv %><br>
+  Drank by: <%= @beer.user.username %><br>
 
-<% if current_user.id == @beer.user_id %>
-  <%= link_to "Delete", beer_url(@beer), method: :delete %> |
-  <%= link_to "Edit Beer", edit_beer_url(@beer) %>
-<% end %>
+  <% if current_user.id == @beer.user_id %>
+    <%= link_to "Delete", beer_path(@beer), method: :delete %> |
+    <%= link_to "Edit Beer", edit_beer_url(@beer) %>
+  <% end %>
+</div>
