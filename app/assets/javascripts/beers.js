@@ -11,6 +11,7 @@ function Beer(name, beer_type, ibu, abv, brewery_id, user_id) {
 // success function - new beer
 function newBeer(json) {
   const beer = new Beer(json)
+  // json is in HTML
 }
 
 // Submit form using AJAX
@@ -22,6 +23,7 @@ $(function() {
        method: "POST",
        data: $( this ).serialize(),
        success: function(response){
+         // response is in HTML
          newBeer(response);
          alert("success");
        }
