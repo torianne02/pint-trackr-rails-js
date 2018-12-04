@@ -21,6 +21,7 @@ $(function() {
     $.ajax({
        url: this.action,
        method: "POST",
+       dataType: "json",
        data: $( this ).serialize(),
        success: function(response){
          // response is in HTML
