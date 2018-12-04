@@ -4,6 +4,7 @@ class BeersController < ApplicationController
 
   def index
     @beers = @user.beers.highest_ibu
+    # render json: @beers
     respond_to do |format|
       format.html
       format.json { render json: @beers }
@@ -19,7 +20,9 @@ class BeersController < ApplicationController
     @brewery = Brewery.find_or_create_by(beer_params[:brewery_attributes])
     @beer = Beer.create(beer_params)
     @beer.brewery_id = @brewery.id
+    @beer.user = @user
     if @beer.save
+      binding.pry
       redirect_to beers_url, notice: "Beer successfully created."
     else
       render :new
@@ -41,7 +44,7 @@ class BeersController < ApplicationController
     @beer = Beer.find_by(id: params[:id])
     respond_to do |format|
       format.html
-      format.json { render json: @beers }
+      format.json { render json: @beer }
     end
   end
 
