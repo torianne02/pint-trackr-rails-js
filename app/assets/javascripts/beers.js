@@ -8,10 +8,9 @@ function Beer(name, beer_type, ibu, abv, brewery_id, user_id) {
   this.user_id = user_id
 }
 
-// success function - new beer
+// success function - creates new beer
 function newBeer(json) {
   const beer = new Beer(json)
-  // json is in HTML
 }
 
 // Submit form using AJAX
@@ -24,35 +23,8 @@ $(function() {
        dataType: "json",
        data: $( this ).serialize(),
        success: function(response){
-         // response is in HTML
          newBeer(response);
-         alert("success");
        }
     })
-    // let formData = new FormData({
-    //   name: 'name',
-    //   beer_type: 'beer_type',
-    //   ibu: 'IBU',
-    //   abv: 'ABV',
-    //   brewery: {
-    //     name: 'brewery_name',
-    //     city: 'brewrery_city',
-    //     state: 'brewery_state'
-    //   }
-    // })
-    //
-    // const url = 'http://localhost:3000/beers'
-    // const token = document.getElementsByName("authenticity_token")[0].value
-    //
-    // fetch(url, {
-    //   method: 'POST',
-    //   body: JSON.stringify(formData),
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //     "Authorization": `Bearer ${token}`
-    //   }
-    // })
-    //   .then(res => res.json())
-    //   .then(json => console.log(json));
   })
 })
