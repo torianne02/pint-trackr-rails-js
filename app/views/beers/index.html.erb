@@ -1,20 +1,7 @@
 <h1><%= @user.username %>'s Beers</h1>
 
-<div id="show_beers">
-  <% @beers.each do |beer| %>
-    Name: <%= link_to "#{beer.name}", beer_path(beer.id) %>
-    <br>
-    Brewery: <%= beer.brewery.name %>
-    <br>
-    Type of Beer: <%= beer.beer_type %>
-    <br>
-    IBU: <%= beer.ibu %>
-    <br>
-    ABV: <%= beer.abv %>
-    <br>
-    <%= link_to "Edit Beer", edit_beer_path(beer) %>
-    <br><br>
-  <% end %>
+<div class="beers">
+  <%= render 'beers/beers' %>
 </div>
 
 <div id="new-beer">
@@ -22,3 +9,4 @@
   <form id="new-beer-form">
     <%= render partial: 'form', locals: {beer: @beer = Beer.new, brewery: @brewery = Brewery.new} %>
   </form>
+</div>
