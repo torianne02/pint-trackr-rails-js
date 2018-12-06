@@ -16,8 +16,16 @@ $(function() {
       method: "POST",
       dataType: "json",
       data: $(this).serialize(),
-      success: function(response) {
+      success: function(json) {
         alert("I made it here.");
+        $.get(this.href).success(function(json) {
+          var $ol = $("div.beers ol")
+          $ol.html("") // empties OL
+
+          json.forEach(function(beer) {
+            $ol.append("<li>" + beer.name + "</li>");
+          })
+        })
       },
       error: function(XMLHttpRequest, textStatus, errorThrown) {
         alert("Status: " + textStatus); alert("Error: " + errorThrown);
