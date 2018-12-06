@@ -20,8 +20,9 @@ class BeersController < ApplicationController
     @beer = Beer.create(beer_params)
     @beer.brewery_id = @brewery.id
     @beer.user = @user
+    binding.pry
     if @beer.save
-      redirect_to beers_url, notice: "Beer successfully created."
+      render 'beers/index'
     else
       render :new
     end
