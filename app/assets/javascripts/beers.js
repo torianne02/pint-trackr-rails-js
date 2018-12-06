@@ -16,10 +16,13 @@ $(function() {
       method: "POST",
       dataType: "json",
       data: $(this).serialize(),
-      success: function(response){
-
-      }
-    })
+      success: function(response) {
+        alert("I made it here.");
+      },
+      error: function(XMLHttpRequest, textStatus, errorThrown) {
+        alert("Status: " + textStatus); alert("Error: " + errorThrown);
+      },
+    });
     e.preventDefault();
   })
 })
