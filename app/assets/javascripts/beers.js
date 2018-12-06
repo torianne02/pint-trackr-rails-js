@@ -8,24 +8,16 @@ function Beer(name, beer_type, ibu, abv, brewery_id, user_id) {
   this.user_id = user_id
 }
 
-// Submit form using AJAX
 $(function() {
   $('#new-beer-form').on("submit", function(e) {
     $.ajax({
       url: this.action,
       method: "POST",
-      dataType: "json",
       data: $(this).serialize(),
-      success: function(json) {
+      success: function(response) {
         alert("I made it here.");
-        $.get(this.href).success(function(json) {
-          var $ol = $("div.beers ol")
-          $ol.html("") // empties OL
-
-          json.forEach(function(beer) {
-            $ol.append("<li>" + beer.name + "</li>");
-          })
-        })
+        var $ol = $("div.beers ol")
+        $ol.append(response);
       },
       error: function(XMLHttpRequest, textStatus, errorThrown) {
         alert("Status: " + textStatus); alert("Error: " + errorThrown);
