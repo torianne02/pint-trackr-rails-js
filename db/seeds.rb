@@ -13,10 +13,10 @@ User.create(username: 'coachflu', email: 'coachflu@gmail.com', password: 'passwo
 User.create(username: 'torrnado', email: 'torrnado@gmail.com', password: 'tornado1')
 
 # Breweries
-Brewery.create(name: 'Yuengling Brewery', city: 'Pottsville', state: 'PA')
-Brewery.create(name: 'Guinness', city: 'Dublin', state: 'Ireland')
-Brewery.create(name: 'Anheuser-Busch', city: 'St. Louis', state: 'MO')
-Brewery.create(name: 'New Belgium Brewing Company', city: 'Fort Collins', state: 'CO')
+Brewery.create(name: 'Yuengling Brewery')
+Brewery.create(name: 'Guinness')
+Brewery.create(name: 'Anheuser-Busch')
+Brewery.create(name: 'New Belgium Brewing Company')
 
 # Beers
 Beer.create(name: 'Traditional Lager', beer_type: 'Lager - American Amber/Red', ibu: 16, abv: '4.5%', user_id: 1, brewery_id: 1)
