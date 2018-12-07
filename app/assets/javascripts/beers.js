@@ -15,7 +15,7 @@ $(function() {
       method: "POST",
       data: $(this).serialize(),
       success: function(response) {
-        alert("I made it here.");
+        debugger
         var $ol = $("div.beers ol")
         $ol.append(response);
       },
