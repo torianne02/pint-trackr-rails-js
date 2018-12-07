@@ -22,7 +22,7 @@ class BeersController < ApplicationController
     @beer.user = @user
     binding.pry
     if @beer.save
-      render 'beers/show', layout: false
+      render 'beers/beer', layout: false
     else
       render :new
     end
