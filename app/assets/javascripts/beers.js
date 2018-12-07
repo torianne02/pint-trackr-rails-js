@@ -9,6 +9,7 @@ function Beer(name, beer_type, ibu, abv, brewery_id, user_id) {
 }
 
 $(function() {
+  // new beer request
   $('#new-beer-form').on("submit", function(e) {
     $.ajax({
       url: this.action,
@@ -18,8 +19,8 @@ $(function() {
         var $ol = $("div.beers ol")
         $ol.append(response);
       },
-      error: function(XMLHttpRequest, textStatus, errorThrown) {
-        alert("Status: " + textStatus); alert("Error: " + errorThrown);
+      error: function(response) {
+        alert("Please fill out all criteria.");
       },
     });
     e.preventDefault();
