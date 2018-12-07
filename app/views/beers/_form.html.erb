@@ -7,13 +7,6 @@
   <%= f.fields_for :brewery, @brewery do |b_field| %>
     <label>Brewery Name:</label>
     <%= b_field.text_field :name %>
-    <br><br>
-
-    <label>Brewery Location:</label><br>
-    <label>City</label>
-    <%= b_field.text_field :city %>
-    <label>State</label>
-    <%= b_field.text_field :state %>
   <% end %>
   <br><br>
 
