@@ -49,7 +49,7 @@ class BeersController < ApplicationController
 
   def destroy
     @beer.destroy
-    redirect_to beers_url, notice: "Beer successfully deleted."
+    redirect_to 'beers/index', notice: "Beer successfully deleted."
   end
 
   private

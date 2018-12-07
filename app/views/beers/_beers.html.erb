@@ -1,12 +1,12 @@
 <ol>
   <% @beers.each do |beer| %>
     <li>
-      <h3><%= link_to "#{beer.name}", beer_path(beer.id) %></h3>
+      <h3><%= beer.name %></h3>
       <p>Brewery: <%= beer.brewery.name %></p>
       <p>Type of Beer: <%= beer.beer_type %></p>
       <p>IBU: <%= beer.ibu %></p>
       <p>ABV: <%= beer.abv %></p>
-      <p><%= link_to "Edit Beer", edit_beer_path(beer) %></p>
+      <p><%= link_to "Edit", edit_beer_path(beer) %> | <%= link_to "Delete", beer_url(beer), method: :delete %></p>
     </li>
   <% end %>
 </ol>
