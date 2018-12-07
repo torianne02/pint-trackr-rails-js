@@ -1,0 +1,9 @@
+<h3><%= @beer.name %></h3>
+<p>Brewery: <%= @beer.brewery.name %></p>
+<p>Type of Beer: <%= @beer.beer_type %></p>
+<p>IBU: <%= @beer.beer_type %></p>
+<p>ABV: <%= @beer.beer_type %></p>
+
+<% if current_user.id == @beer.user_id %>
+  <%= link_to "Edit", edit_beer_path(@beer) %>
+<% end %>
