@@ -10,8 +10,6 @@
   <% end %>
 </div>
 
-<div id="next_beer">
-  <% if @user_beers[@user_beers.index(@beer) + 1] %>
-    <%= link_to "Next Beer", "/beers/#{@user_beers[@user_beers.index(@beer) + 1].id}" %>
-  <% end %>
-</div>
+    <% if @user_beers[@user_beers.index(@beer) + 1] %>
+      <%= link_to "Next Beer", "/beers/#{@user_beers[@user_beers.index(@beer) + 1].id}", class: "next_beer" %>
+    <% end %>
