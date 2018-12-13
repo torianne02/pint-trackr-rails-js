@@ -3,7 +3,7 @@ class BeersController < ApplicationController
   before_action :set_beer, only: %i[show edit update destroy]
 
   def index
-    @beers = @user.beers.highest_ibu
+    @beers = @user.beers
     respond_to do |format|
       format.html
       format.json { render json: @beers }
