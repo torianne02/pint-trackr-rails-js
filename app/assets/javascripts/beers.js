@@ -8,6 +8,7 @@ function Beer(name, beer_type, ibu, abv, brewery_id, user_id) {
   this.user_id = user_id
 }
 
+// clear form
 const clearForm = () => {
   $("#beer_name").val("");
   $("#beer_brewery_attributes_name").val("");
@@ -15,6 +16,13 @@ const clearForm = () => {
   $("#beer_ibu").val("");
   $("#beer_abv").val("");
 }
+
+// next beer function
+// function getBeer(json) {
+//   const beer = new Beer(json)
+//   const userBeers = beer.user.beers
+//
+// }
 
 $(function() {
   // new beer request
@@ -34,4 +42,23 @@ $(function() {
       },
     });
   })
+
+  // show beer request
+  // $('#show_beer').on('click', 'a.next', function(e) {
+  //   e.preventDefault();
+  //   $.ajax({
+  //     url: this.href,
+  //     type: "GET",
+  //     dataType: "json",
+  //     success: function(response) {
+  //       getBeer(response)
+  //     },
+  //     error: function(response) {
+  //       alert("Oops! Something went wrong!")
+  //     }
+  //   })
+  // })
 })
+
+// todo - add logic to go to next beer on show page
+// todo - add prototype function

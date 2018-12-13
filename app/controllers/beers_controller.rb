@@ -40,10 +40,10 @@ class BeersController < ApplicationController
   end
 
   def show
-    @beer = Beer.find_by(id: params[:id])
+    @user_beers = @user.beers
     respond_to do |format|
       format.html
-      format.json { render json: @beer }
+      format.json { render json: @beer = @user_beers[@user_beers.index(@beer) + 1]}
     end
   end
 

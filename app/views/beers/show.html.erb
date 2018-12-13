@@ -1,4 +1,4 @@
-<div id=show_beer>
+<div id="show_beer">
   <h3><%= @beer.name %></h3>
   <p>Brewery: <%= @beer.brewery.name %></p>
   <p>Type of Beer: <%= @beer.beer_type %></p>
@@ -7,5 +7,11 @@
 
   <% if current_user.id == @beer.user_id %>
     <%= link_to "Edit", edit_beer_path(@beer) %>
+  <% end %>
+</div>
+
+<div id="next_beer">
+  <% if @user_beers[@user_beers.index(@beer) + 1] %>
+    <%= link_to "Next Beer", "/beers/#{@user_beers[@user_beers.index(@beer) + 1].id}" %>
   <% end %>
 </div>
