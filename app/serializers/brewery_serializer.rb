@@ -1,5 +1,5 @@
 class BrewerySerializer < ActiveModel::Serializer
-  attributes :name, :city, :state
+  attributes :name
 
   has_many :beers
 end
