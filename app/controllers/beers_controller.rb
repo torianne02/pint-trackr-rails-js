@@ -43,7 +43,6 @@ class BeersController < ApplicationController
     respond_to do |format|
       format.html
       format.json { render json: @beer = @user_beers[@user_beers.index(@beer)]}
-      binding.pry
     end
   end
 

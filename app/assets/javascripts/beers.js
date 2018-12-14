@@ -22,20 +22,10 @@ Beer.prototype.successMessage = function() {
   alert(`${this.name} successfully created.`)
 }
 
-// beer#show template
-// function renderTemplate(beer) {
-//   return `<h3>${beer.name}</h3><br><p>Brewery: ${beer.brewery.name}</p><br><p>Beer Type: ${beer.beer_type}</p><br><p>IBU: ${beer.ibu}</p><br><p>ABV: ${beer.abv}</p>`;
-// }
-
-// compile next beer
-// Beer.prototype.renderNext = function() {
-//   return Beer.renderTemplate(this)
-// }
-
 // next beer function
 function getBeer(data) {
   var beer = data
-  // var beerTemp = beer.renderNext()
+
   $('div#show_beer').html("")
   $('div#show_beer').html(`<h3>${beer.name}</h3>
     <p>Brewery: ${beer.brewery.name}</p>
@@ -56,7 +46,7 @@ $(function() {
       data: $(this).serialize(),
       success: function(response) {
         clearForm();
-        var $ol = $("div.beers ol")
+        const $ol = $("div.beers ol")
         $ol.append(response);
       },
       error: function(response) {
@@ -82,5 +72,4 @@ $(function() {
   })
 })
 
-// todo - add logic to go to next beer on show page
 // todo - add prototype function
