@@ -2,14 +2,15 @@
   <h3><%= @beer.name %></h3>
   <p>Brewery: <%= @beer.brewery.name %></p>
   <p>Type of Beer: <%= @beer.beer_type %></p>
-  <p>IBU: <%= @beer.beer_type %></p>
-  <p>ABV: <%= @beer.beer_type %></p>
+  <p>IBU: <%= @beer.ibu %></p>
+  <p>ABV: <%= @beer.abv %></p>
 
   <% if current_user.id == @beer.user_id %>
     <%= link_to "Edit", edit_beer_path(@beer) %>
   <% end %>
-</div>
 
-<% if @user_beers[@user_beers.index(@beer) + 1] %>
-  <%= link_to "Next Beer", "/beers/#{@user_beers[@user_beers.index(@beer) + 1].id}", class: "next_beer" %>
-<% end %>
+  <% if @user_beers.length > @user_beers.index(@beer) + 1 %>
+    <%= link_to "Next Beer", "/beers/#{@user_beers[@user_beers.index(@beer) + 1].id}", class: "next_beer" %>
+    <% binding.pry %>
+  <% end %>
+</div>
