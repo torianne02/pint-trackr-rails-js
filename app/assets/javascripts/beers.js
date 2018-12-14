@@ -17,12 +17,34 @@ const clearForm = () => {
   $("#beer_abv").val("");
 }
 
-// next beer function
-// function getBeer(json) {
-//   const beer = new Beer(json)
-//   const userBeers = beer.user.beers
-//
+// prototype example function
+Beer.prototype.successMessage = function() {
+  alert(`${this.name} successfully created.`)
+}
+
+// beer#show template
+// function renderTemplate(beer) {
+//   return `<h3>${beer.name}</h3><br><p>Brewery: ${beer.brewery.name}</p><br><p>Beer Type: ${beer.beer_type}</p><br><p>IBU: ${beer.ibu}</p><br><p>ABV: ${beer.abv}</p>`;
 // }
+
+// compile next beer
+// Beer.prototype.renderNext = function() {
+//   return Beer.renderTemplate(this)
+// }
+
+// next beer function
+function getBeer(data) {
+  var beer = data
+  // var beerTemp = beer.renderNext()
+  $('div#show_beer').html("")
+  $('div#show_beer').html(`<h3>${beer.name}</h3>
+    <p>Brewery: ${beer.brewery.name}</p>
+    <p>Beer Type: ${beer.beer_type}</p>
+    <p>IBU: ${beer.ibu}</p>
+    <p>ABV: ${beer.abv}</p>
+    <a href="/beers/${beer.id}/edit">Edit</a>
+    <a href="/beers/${beer.id + 1}" class="next_beer">Next Beer</a>`)
+}
 
 $(function() {
   // new beer request
@@ -43,21 +65,21 @@ $(function() {
     });
   })
 
-  // show beer request
-  // $('#show_beer').on('click', 'a.next', function(e) {
-  //   e.preventDefault();
-  //   $.ajax({
-  //     url: this.href,
-  //     type: "GET",
-  //     dataType: "json",
-  //     success: function(response) {
-  //       getBeer(response)
-  //     },
-  //     error: function(response) {
-  //       alert("Oops! Something went wrong!")
-  //     }
-  //   })
-  // })
+  // show next beer request
+  $('.next_beer').on('click', function(e) {
+    e.preventDefault();
+    $.ajax({
+      type: "GET",
+      url: this.href,
+      dataType: 'json',
+      success: function(response) {
+        getBeer(response)
+      },
+      error: function(response) {
+        alert("Oops! Something went wrong!")
+      }
+    })
+  })
 })
 
 // todo - add logic to go to next beer on show page
