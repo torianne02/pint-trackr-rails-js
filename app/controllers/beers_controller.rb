@@ -20,7 +20,6 @@ class BeersController < ApplicationController
     @beer = Beer.create(beer_params)
     @beer.brewery_id = @brewery.id
     @beer.user = @user
-    binding.pry
     if @beer.save
       render 'beers/beer', layout: false
     else
@@ -43,7 +42,8 @@ class BeersController < ApplicationController
     @user_beers = @user.beers
     respond_to do |format|
       format.html
-      format.json { render json: @beer = @user_beers[@user_beers.index(@beer) + 1]}
+      format.json { render json: @beer = @user_beers[@user_beers.index(@beer)]}
+      binding.pry
     end
   end
 
