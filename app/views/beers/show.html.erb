@@ -5,6 +5,10 @@
   <p>IBU: <%= @beer.ibu %></p>
   <p>ABV: <%= @beer.abv %></p>
 
+  <% if @user_beers.index(@beer) - 1 >= 0 %>
+    <%= link_to "Previous Beer", "/beers/#{@user_beers[@user_beers.index(@beer) - 1].id}", class: "prev_beer" %>
+  <% end %>
+
   <% if current_user.id == @beer.user_id %>
     <%= link_to "Edit", edit_beer_path(@beer) %>
   <% end %>
