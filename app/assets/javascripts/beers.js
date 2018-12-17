@@ -19,11 +19,6 @@ const clearForm = () => {
   $("#beer_abv").val("");
 }
 
-// prototype example function
-Beer.prototype.successMessage = function() {
-  alert(`${this.name} successfully created.`)
-}
-
 // next beer function
 function getBeer(data) {
   const beer = data
@@ -44,15 +39,31 @@ function getBeer(data) {
   beer.idOfNext = nextBeerCheck() ? setIdOfNext() : 0
   beer.idOfLast = lastBeerCheck() ? setIdOfLast() : 0
 
-  $('div#show_beer').html("")
-  $('div#show_beer').html(`<h3>${beer.name}</h3>
+  // beer info template
+  const beerInfoTemplate = (`<h3>${beer.name}</h3>
     <p>Brewery: ${beer.brewery.name}</p>
     <p>Beer Type: ${beer.beer_type}</p>
     <p>IBU: ${beer.ibu}</p>
-    <p>ABV: ${beer.abv}</p>
-    <a href="/beers/${beer.idOfLast}" class="prev_beer">Previous Beer</a>
-    <a href="/beers/${beer.id}/edit">Edit</a>
-    <a href="/beers/${beer.idOfNext}" class="next_beer">Next Beer</a>`)
+    <p>ABV: ${beer.abv}</p>`)
+
+  // clear show_beer contents
+  $('div#show_beer').html("")
+
+  // conditional statement for buttons and html
+  if (userBeers.indexOf(beer) === 0) {
+    $('div#show_beer').html(`${beerInfoTemplate}
+      <a href="/beers/${beer.id}/edit">Edit</a>
+      <a href="/beers/${beer.idOfNext}" class="next_beer">Next Beer</a>`)
+  } else if (userBeers.indexOf(beer) === userBeers.length - 1) {
+    $('div#show_beer').html(`${beerInfoTemplate}
+      <a href="/beers/${beer.idOfLast}" class="prev_beer">Previous Beer</a>
+      <a href="/beers/${beer.id}/edit">Edit</a>`)
+  } else {
+    $('div#show_beer').html(`${beerInfoTemplate}
+      <a href="/beers/${beer.idOfLast}" class="prev_beer">Previous Beer</a>
+      <a href="/beers/${beer.id}/edit">Edit</a>
+      <a href="/beers/${beer.idOfNext}" class="next_beer">Next Beer</a>`)
+  }
 }
 
 $(function() {
