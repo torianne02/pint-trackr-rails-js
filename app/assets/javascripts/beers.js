@@ -6,8 +6,6 @@ function Beer(name, beer_type, ibu, abv, brewery_id, user_id) {
   this.abv = abv
   this.brewery_id = brewery_id
   this.user_id = user_id
-  this.idOfNext = 0
-  this.idOfLast = 0
 }
 
 // clear form
@@ -24,25 +22,13 @@ function getBeer(data) {
   const beer = data
   const userBeers = beer.user.beers
 
-  // beer checks
-  const lastBeerCheck = () => userBeers[userBeers.indexOf(findBeer[0]) - 1]
-  const nextBeerCheck = () => userBeers[userBeers.indexOf(findBeer[0]) + 1]
-
-  // set id functions
-  const setIdOfNext = () => userBeers[userBeers.indexOf(findBeer[0]) + 1].id
-  const setIdOfLast = () => userBeers[userBeers.indexOf(findBeer[0]) - 1].id
-
-  // find beer
-  const findBeer = userBeers.filter(userBeer => userBeer.id === beer.id)
-
-  // set id's
-  beer.idOfNext = nextBeerCheck() ? setIdOfNext() : 0
-  beer.idOfLast = lastBeerCheck() ? setIdOfLast() : 0
+  // locate index of beer
+  const findIndex = userBeers.map(function(e) {return e.id}).indexOf(beer.id)
 
   // beer info template
   const beerInfoTemplate = (`<h3>${beer.name}</h3>
     <p>Brewery: ${beer.brewery.name}</p>
-    <p>Beer Type: ${beer.beer_type}</p>
+    <p>Type of Beer: ${beer.beer_type}</p>
     <p>IBU: ${beer.ibu}</p>
     <p>ABV: ${beer.abv}</p>`)
 
@@ -50,19 +36,19 @@ function getBeer(data) {
   $('div#show_beer').html("")
 
   // conditional statement for buttons and html
-  if (userBeers.indexOf(beer) === 0) {
+  if (findIndex === 0) {
     $('div#show_beer').html(`${beerInfoTemplate}
       <a href="/beers/${beer.id}/edit">Edit</a>
-      <a href="/beers/${beer.idOfNext}" class="next_beer">Next Beer</a>`)
-  } else if (userBeers.indexOf(beer) === userBeers.length - 1) {
+      <a href="/beers/${beer.id + 1}" class="next_beer">Next Beer</a>`)
+  } else if (findIndex === userBeers.length - 1) {
     $('div#show_beer').html(`${beerInfoTemplate}
-      <a href="/beers/${beer.idOfLast}" class="prev_beer">Previous Beer</a>
+      <a href="/beers/${beer.id - 1}" class="prev_beer">Previous Beer</a>
       <a href="/beers/${beer.id}/edit">Edit</a>`)
   } else {
     $('div#show_beer').html(`${beerInfoTemplate}
-      <a href="/beers/${beer.idOfLast}" class="prev_beer">Previous Beer</a>
+      <a href="/beers/${beer.id - 1}" class="prev_beer">Previous Beer</a>
       <a href="/beers/${beer.id}/edit">Edit</a>
-      <a href="/beers/${beer.idOfNext}" class="next_beer">Next Beer</a>`)
+      <a href="/beers/${beer.id + 1}" class="next_beer">Next Beer</a>`)
   }
 }
 
