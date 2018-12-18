@@ -20,10 +20,10 @@ const clearForm = () => {
 // next beer function
 function getBeer(data) {
   const beer = data
-  const userBeers = beer.user.beers
+  var userBeers = beer.user.beers
 
   // locate index of beer
-  const findIndex = userBeers.map(function(e) {return e.id}).indexOf(beer.id)
+  var findIndex = userBeers.map(function(e) {return e.id}).indexOf(beer.id)
 
   // beer info template
   const beerInfoTemplate = (`<h3>${beer.name}</h3>
