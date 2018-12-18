@@ -24,23 +24,10 @@ function getBeer(data) {
   const beer = data
   var userBeers = beer.user.beers
 
-  // beer checks
-  const lastBeerCheck = () => userBeers[userBeers.indexOf(findBeer[0]) - 1]
-  const nextBeerCheck = () => userBeers[userBeers.indexOf(findBeer[0]) + 1]
-
-  // set id functions
-  const setIdOfNext = () => userBeers[userBeers.indexOf(findBeer[0]) + 1].id
-  const setIdOfLast = () => userBeers[userBeers.indexOf(findBeer[0]) - 1].id
-
-  // find beer
-  const findBeer = userBeers.filter(userBeer => userBeer.id === beer.id)
-
-  // set id's
-  beer.idOfNext = nextBeerCheck() ? setIdOfNext() : 0
-  beer.idOfLast = lastBeerCheck() ? setIdOfLast() : 0
-
   // locate index of beer
   var findIndex = userBeers.map(function(e) {return e.id}).indexOf(beer.id)
+
+  // console.log(beer.user.beers[findIndex+1])
 
   // beer info template
   const beerInfoTemplate = (`<h3>${beer.name}</h3>
@@ -56,16 +43,16 @@ function getBeer(data) {
   if (findIndex === 0) {
     $('div#show_beer').html(`${beerInfoTemplate}
       <a href="/beers/${beer.id}/edit">Edit</a>
-      <a href="/beers/${beer.idOfNext}" class="next_beer">Next Beer</a>`)
+      <a href="/beers/${userBeers[findIndex+1].id}" class="next_beer">Next Beer</a>`)
   } else if (findIndex === userBeers.length - 1) {
     $('div#show_beer').html(`${beerInfoTemplate}
-      <a href="/beers/${beer.idOfLast}" class="prev_beer">Previous Beer</a>
+      <a href="/beers/${userBeers[findIndex-1].id}" class="prev_beer">Previous Beer</a>
       <a href="/beers/${beer.id}/edit">Edit</a>`)
   } else {
     $('div#show_beer').html(`${beerInfoTemplate}
-      <a href="/beers/${beer.idOfLast}" class="prev_beer">Previous Beer</a>
+      <a href="/beers/${userBeers[findIndex-1].id}" class="prev_beer">Previous Beer</a>
       <a href="/beers/${beer.id}/edit">Edit</a>
-      <a href="/beers/${beer.idOfNext}" class="next_beer">Next Beer</a>`)
+      <a href="/beers/${userBeers[findIndex+1].id}" class="next_beer">Next Beer</a>`)
   }
 }
 
