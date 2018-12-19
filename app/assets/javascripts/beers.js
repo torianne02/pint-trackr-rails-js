@@ -6,8 +6,7 @@ function Beer(name, beer_type, ibu, abv, brewery_id, user_id) {
   this.abv = abv
   this.brewery_id = brewery_id
   this.user_id = user_id
-  this.idOfNext = 0
-  this.idOfLast = 0
+  }
 }
 
 // clear form
@@ -26,8 +25,6 @@ function getBeer(data) {
 
   // locate index of beer
   var findIndex = userBeers.map(function(e) {return e.id}).indexOf(beer.id)
-
-  // console.log(beer.user.beers[findIndex+1])
 
   // beer info template
   const beerInfoTemplate = (`<h3>${beer.name}</h3>
@@ -110,3 +107,5 @@ $(function() {
 })
 
 // todo - add prototype function
+  // isHoppy returns true if ibu >= 40
+  // add dateAdded
