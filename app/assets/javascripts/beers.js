@@ -9,7 +9,7 @@ function Beer(name, beer_type, ibu, abv, brewery_id, user_id) {
 }
 
 // Beer.prototype.info = function() {
-//   return "IBU: " this.ibu + " ABV: " + this.abv
+//   return "<p>IBU: " this.ibu + "</p>" + "<p>ABV: " + this.abv + "</p>"
 // }
 
 // Beer.prototype.isHoppy = function() {
@@ -42,6 +42,9 @@ function getBeer(data) {
     <p>Type of Beer: ${beer.beer_type}</p>
     <p>IBU: ${beer.ibu}</p>
     <p>ABV: ${beer.abv}</p>`)
+    // ${beer.info()}`)
+    // if beer.isHoppy() == true <p>This beer is hoppy!</p>
+    // <p>beer.isHoppy() (returns the message)
 
   // clear show_beer contents
   $('div#show_beer').html("")
