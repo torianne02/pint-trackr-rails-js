@@ -9,30 +9,14 @@ function Beer(beerData) {
   this.id = beerData.id
 }
 
-Beer.prototype.pour = function() {
-  $(document.body).append(`<p>Pouring a nice glass of ${this.name}</p>`)
-}
-
+// html template for beer info
 Beer.prototype.beerInfoTemplate = function() {
-  return (`<h3>${this.name}</h3>
+  return `<h3>${this.name}</h3>
     <p>Brewery: ${this.brewery.name}</p>
     <p>Type of Beer: ${this.beerType}</p>
     <p>IBU: ${this.ibu}</p>
-    <p>ABV: ${this.abv}</p>`)
+    <p>ABV: ${this.abv}</p>`
 }
-
-// Beer.prototype.info = function() {
-//   return "<p>IBU: " this.ibu + "</p>" + "<p>ABV: " + this.abv + "</p>"
-// }
-
-// do i need to put function(beer) ??
-
-// Beer.prototype.isHoppy = function() {
-//   if(ibu > 40) {
-//     true
-//     // or return "This beer is Hoppy!"
-//   }
-// }
 
 // clear form
 const clearForm = () => {
