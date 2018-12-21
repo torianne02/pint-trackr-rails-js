@@ -51,13 +51,6 @@ function getBeer(data) {
   // locate index of beer
   var findIndex = userBeers.map(function(e) {return e.id}).indexOf(beer.id)
 
-  // // beer info template
-  // const beerInfoTemplate = (`<h3>${beer.name}</h3>
-  //   <p>Brewery: ${beer.brewery.name}</p>
-  //   <p>Type of Beer: ${beer.beerType}</p>
-  //   <p>IBU: ${beer.ibu}</p>
-  //   <p>ABV: ${beer.abv}</p>`)
-
   // clear show_beer contents
   $('div#show_beer').html("")
 
@@ -129,7 +122,3 @@ $(function() {
     })
   })
 })
-
-// todo - add prototype function
-  // isHoppy returns true if ibu >= 40
-  // combine beer abv and ibu as "beer info"
