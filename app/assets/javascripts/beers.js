@@ -6,7 +6,6 @@ function Beer(name, beer_type, ibu, abv, brewery_id, user_id) {
   this.abv = abv
   this.brewery_id = brewery_id
   this.user_id = user_id
-  }
 }
 
 // clear form
@@ -108,4 +107,3 @@ $(function() {
 
 // todo - add prototype function
   // isHoppy returns true if ibu >= 40
-  // add dateAdded
