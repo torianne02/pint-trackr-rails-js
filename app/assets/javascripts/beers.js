@@ -1,16 +1,31 @@
 // JSON Beer Constructor
-function Beer(name, beer_type, ibu, abv, brewery_id, user_id) {
-  this.name = name
-  this.beer_type = beer_type
-  this.ibu = ibu
-  this.abv = abv
-  this.brewery_id = brewery_id
-  this.user_id = user_id
+function Beer(beerData) {
+  this.name = beerData.name
+  this.beerType = beerData.beer_type
+  this.ibu = beerData.ibu
+  this.abv = beerData.abv
+  this.brewery = beerData.brewery
+  this.user = beerData.user
+  this.id = beerData.id
+}
+
+Beer.prototype.pour = function() {
+  $(document.body).append(`<p>Pouring a nice glass of ${this.name}</p>`)
+}
+
+Beer.prototype.beerInfoTemplate = function() {
+  return (`<h3>${this.name}</h3>
+    <p>Brewery: ${this.brewery.name}</p>
+    <p>Type of Beer: ${this.beerType}</p>
+    <p>IBU: ${this.ibu}</p>
+    <p>ABV: ${this.abv}</p>`)
 }
 
 // Beer.prototype.info = function() {
 //   return "<p>IBU: " this.ibu + "</p>" + "<p>ABV: " + this.abv + "</p>"
 // }
+
+// do i need to put function(beer) ??
 
 // Beer.prototype.isHoppy = function() {
 //   if(ibu > 40) {
@@ -30,36 +45,33 @@ const clearForm = () => {
 
 // next beer function
 function getBeer(data) {
-  const beer = data
+  const beer = new Beer(data)
   var userBeers = beer.user.beers
 
   // locate index of beer
   var findIndex = userBeers.map(function(e) {return e.id}).indexOf(beer.id)
 
-  // beer info template
-  const beerInfoTemplate = (`<h3>${beer.name}</h3>
-    <p>Brewery: ${beer.brewery.name}</p>
-    <p>Type of Beer: ${beer.beer_type}</p>
-    <p>IBU: ${beer.ibu}</p>
-    <p>ABV: ${beer.abv}</p>`)
-    // ${beer.info()}`)
-    // if beer.isHoppy() == true <p>This beer is hoppy!</p>
-    // <p>beer.isHoppy() (returns the message)
+  // // beer info template
+  // const beerInfoTemplate = (`<h3>${beer.name}</h3>
+  //   <p>Brewery: ${beer.brewery.name}</p>
+  //   <p>Type of Beer: ${beer.beerType}</p>
+  //   <p>IBU: ${beer.ibu}</p>
+  //   <p>ABV: ${beer.abv}</p>`)
 
   // clear show_beer contents
   $('div#show_beer').html("")
 
   // conditional statement for buttons and html
   if (findIndex === 0) {
-    $('div#show_beer').html(`${beerInfoTemplate}
+    $('div#show_beer').html(`${beer.beerInfoTemplate()}
       <a href="/beers/${beer.id}/edit">Edit</a>
       <a href="/beers/${userBeers[findIndex+1].id}" class="next_beer">Next Beer</a>`)
   } else if (findIndex === userBeers.length - 1) {
-    $('div#show_beer').html(`${beerInfoTemplate}
+    $('div#show_beer').html(`${beer.beerInfoTemplate()}
       <a href="/beers/${userBeers[findIndex-1].id}" class="prev_beer">Previous Beer</a>
       <a href="/beers/${beer.id}/edit">Edit</a>`)
   } else {
-    $('div#show_beer').html(`${beerInfoTemplate}
+    $('div#show_beer').html(`${beer.beerInfoTemplate()}
       <a href="/beers/${userBeers[findIndex-1].id}" class="prev_beer">Previous Beer</a>
       <a href="/beers/${beer.id}/edit">Edit</a>
       <a href="/beers/${userBeers[findIndex+1].id}" class="next_beer">Next Beer</a>`)
@@ -91,7 +103,6 @@ $(function() {
     $.ajax({
       type: "GET",
       url: this.href,
-      data: $(this).serialize(),
       dataType: 'json',
       success: function(response) {
         getBeer(response)
