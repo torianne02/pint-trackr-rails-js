@@ -8,6 +8,17 @@ function Beer(name, beer_type, ibu, abv, brewery_id, user_id) {
   this.user_id = user_id
 }
 
+// Beer.prototype.info = function() {
+//   return "IBU: " this.ibu + " ABV: " + this.abv
+// }
+
+// Beer.prototype.isHoppy = function() {
+//   if(ibu > 40) {
+//     true
+//     // or return "This beer is Hoppy!"
+//   }
+// }
+
 // clear form
 const clearForm = () => {
   $("#beer_name").val("");
@@ -107,3 +118,4 @@ $(function() {
 
 // todo - add prototype function
   // isHoppy returns true if ibu >= 40
+  // combine beer abv and ibu as "beer info"
