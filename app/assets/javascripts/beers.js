@@ -55,6 +55,19 @@ function getBeer(data) {
   }
 }
 
+// render list of beers within #show_user
+function getUserBeers(data) {
+  const userBeers = data
+  var allBeersHTML = ``
+
+  for (i = 0; i < userBeers.length; i++) {
+    const beer = new Beer(userBeers[i])
+    allBeersHTML += beer.beerInfoTemplate()
+  }
+
+  $('div#show_user_beers').html(`${allBeersHTML}`)
+}
+
 $(function() {
   // new beer request
   $('#new-beer-form').on("submit", function(e) {
@@ -99,6 +112,21 @@ $(function() {
       dataType: 'json',
       success: function(response) {
         getBeer(response)
+      },
+      error: function(response) {
+        alert("Oops! Something went wrong!")
+      }
+    })
+  })
+
+  $('#show_user').on('click', 'a.show_user_beers', function(e) {
+    e.preventDefault();
+    $.ajax({
+      type: "GET",
+      url: this.href,
+      dataType: 'json',
+      success: function(response) {
+        getUserBeers(response)
       },
       error: function(response) {
         alert("Oops! Something went wrong!")
