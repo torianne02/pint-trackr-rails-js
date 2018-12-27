@@ -18,6 +18,10 @@ Beer.prototype.beerInfoTemplate = function() {
     <p>ABV: ${this.abv}</p>`
 }
 
+Beer.prototype.breweryBeerInfoTemplate = function () {
+  return `<li>${this.name} | ${this.beerType}</li>`
+}
+
 // clear form
 const clearForm = () => {
   $("#beer_name").val("");
@@ -35,7 +39,6 @@ function getBeer(data) {
   // locate index of beer
   var findIndex = userBeers.map(function(e) {return e.id}).indexOf(beer.id)
 
-  // clear show_beer contents
   $('div#show_beer').html("")
 
   // conditional statement for buttons and html
@@ -55,17 +58,32 @@ function getBeer(data) {
   }
 }
 
-// render list of beers within #show_user
+// render list of a user's beers
 function getUserBeers(data) {
   const userBeers = data
-  var allBeersHTML = ``
+  var userBeersHTML = ``
 
   for (i = 0; i < userBeers.length; i++) {
     const beer = new Beer(userBeers[i])
-    allBeersHTML += beer.beerInfoTemplate()
+    userBeersHTML += beer.beerInfoTemplate()
   }
 
-  $('div#show_user_beers').html(`${allBeersHTML}`)
+  $('div#show_user_beers').html(`${userBeersHTML}`)
+}
+
+// render list of a brewery's beers
+function showMoreBreweryBeers(data) {
+  const breweryBeers = data
+  var breweryShowHTML = ``
+
+  for (i = 0; i < breweryBeers.length; i++) {
+    let beer = new Beer(breweryBeers[i])
+    breweryShowHTML += beer.breweryBeerInfoTemplate()
+    debugger
+  }
+    debugger
+  $('div#show_brewery ol').html('');
+  $('div#show_brewery ol').html(`${breweryShowHTML}`)
 }
 
 $(function() {
@@ -131,6 +149,21 @@ $(function() {
       error: function(response) {
         alert("Oops! Something went wrong!")
       }
+    })
+  })
+
+  $('#show_brewery').on('click', 'button.show_more', function(e) {
+    e.preventDefault();
+    $.ajax({
+      type: "GET",
+      dataType: 'json',
+      success: function(response) {
+        showMoreBreweryBeers(response)
+      },
+      error: function(response) {
+        debugger
+        alert("Oops! Something went wrong!")
+       }
     })
   })
 })
