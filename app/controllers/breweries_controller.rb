@@ -1,8 +1,11 @@
 class BreweriesController < ApplicationController
-  def index
-    @breweries = Brewery.all
-    # @breweries.each do |brewery|
-    #   @beers = brewery.beers
-    # end
+  def show
+    @brewery = Brewery.find(params[:id])
+    @beers = @brewery.beers
+
+    respond_to do |format|
+      format.html
+      format.json { render json: @beers }
+    end
   end
 end
