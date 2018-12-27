@@ -18,6 +18,7 @@ Beer.prototype.beerInfoTemplate = function() {
     <p>ABV: ${this.abv}</p>`
 }
 
+// html template for brewery beer info
 Beer.prototype.breweryBeerInfoTemplate = function () {
   return `<li>${this.name} | ${this.beerType}</li>`
 }
@@ -95,7 +96,7 @@ $(function() {
       data: $(this).serialize(),
       success: function(response) {
         clearForm();
-        const $ol = $("div.beers ol")
+        var $ol = $("div.beers ol")
         $ol.append(response);
       },
       error: function(response) {
