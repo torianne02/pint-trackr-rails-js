@@ -77,13 +77,12 @@ function showMoreBreweryBeers(data) {
   var breweryShowHTML = ``
 
   for (i = 0; i < breweryBeers.length; i++) {
-    let beer = new Beer(breweryBeers[i])
+    const beer = new Beer(breweryBeers[i])
     breweryShowHTML += beer.breweryBeerInfoTemplate()
-    debugger
   }
-    debugger
-  $('div#show_brewery ol').html('');
-  $('div#show_brewery ol').html(`${breweryShowHTML}`)
+
+  $('div#show_brewery ul').html('');
+  $('div#show_brewery ul').html(`${breweryShowHTML}`)
 }
 
 $(function() {
