@@ -165,6 +165,7 @@ $(function() {
     })
   })
 
+  // show beer page
   $('#show_user_beers').on('click', 'a.show-beer', function(e) {
     e.preventDefault();
     $.ajax({
@@ -200,9 +201,6 @@ $(function() {
   // request to show form via add-beer button
   $('#show_user').on('click', 'button#add-beer', function(e) {
     e.preventDefault()
-
-    // add 'get' breweries for dropdown in form
-
     $.ajax({
       url: '/add_beer_form',
       type: 'get',
