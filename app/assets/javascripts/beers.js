@@ -84,23 +84,6 @@ function getUserBeers(data) {
   $ol.html(`${userBeersHTML}`)
 }
 
-// get form partial via AJAX
-function addBeer() {
-  $('button#add-beer').on('click', function(e) {
-    e.preventDefault()
-
-    // add 'get' breweries for dropdown in form
-
-    $.ajax({
-      url: '/add_beer_form',
-      type: 'get',
-      success: function(response) {
-        $('#add-beer-form').html(response)
-      }
-    })
-  })
-}
-
 // render list of a brewery's beers
 function showMoreBreweryBeers(data) {
   const breweryBeers = data
