@@ -1,18 +1,20 @@
 // JSON Beer Constructor
-function Beer(beerData) {
-  this.name = beerData.name
-  this.beerType = beerData.beer_type
-  this.ibu = beerData.ibu
-  this.abv = beerData.abv
-  this.brewery = beerData.brewery
-  this.user = beerData.user
-  this.id = beerData.id
+class Beer {
+  constructor(beerData) {
+    this.name = beerData.name
+    this.beerType = beerData.beer_type
+    this.ibu = beerData.ibu
+    this.abv = beerData.abv
+    this.brewery = beerData.brewery
+    this.user = beerData.user
+    this.id = beerData.id
+  }
 }
 
 // html template for beer info
 Beer.prototype.beerInfoTemplate = function() {
-  return `<h3>${this.name}</h3>
-    <p>Brewery: ${this.brewery.name}</p>
+  return `<h3><a href="/beers/${this.id}", class="show-beer">${this.name}</a></h3>
+    <p><a href="/breweries/${this.brewery.id}", class="show-brewery">${this.brewery.name}</a></p>
     <p>Type of Beer: ${this.beerType}</p>
     <p>IBU: ${this.ibu}</p>
     <p>ABV: ${this.abv}</p>`
@@ -21,6 +23,15 @@ Beer.prototype.beerInfoTemplate = function() {
 // html template for brewery beer info
 Beer.prototype.breweryBeerInfoTemplate = function () {
   return `<li>${this.name} | ${this.beerType}</li>`
+}
+
+// html template for beer list
+Beer.prototype.beerListElementTemplate = function() {
+  return `<li><h3><a href="/beers/${this.id}", class="show-beer">${this.name}</a></h3>
+    <p><a href="/breweries/${this.brewery.id}", class="show-brewery">${this.brewery.name}</a></p>
+    <p>Type of Beer: ${this.beerType}</p>
+    <p>IBU: ${this.ibu}</p>
+    <p>ABV: ${this.abv}</p></li>`
 }
 
 // clear form
@@ -66,10 +77,28 @@ function getUserBeers(data) {
 
   for (i = 0; i < userBeers.length; i++) {
     const beer = new Beer(userBeers[i])
-    userBeersHTML += beer.beerInfoTemplate()
+    userBeersHTML += beer.beerListElementTemplate()
   }
 
-  $('div#show_user_beers').html(`${userBeersHTML}`)
+  const $ol = $('div#show_user_beers ol')
+  $ol.html(`${userBeersHTML}`)
+}
+
+// get form partial via AJAX
+function addBeer() {
+  $('button#add-beer').on('click', function(e) {
+    e.preventDefault()
+
+    // add 'get' breweries for dropdown in form
+
+    $.ajax({
+      url: '/add_beer_form',
+      type: 'get',
+      success: function(response) {
+        $('#add-beer-form').html(response)
+      }
+    })
+  })
 }
 
 // render list of a brewery's beers
@@ -88,7 +117,7 @@ function showMoreBreweryBeers(data) {
 
 $(function() {
   // new beer request
-  $('#new-beer-form').on("submit", function(e) {
+  $('#add-beer-form').on("submit", function(e) {
     e.preventDefault();
     $.ajax({
       url: this.action,
@@ -96,8 +125,8 @@ $(function() {
       data: $(this).serialize(),
       success: function(response) {
         clearForm();
-        var $ol = $("div.beers ol")
-        $ol.append(response);
+        $("div#show_user_beers").append(response);
+        // $ol.append(response);
       },
       error: function(response) {
         alert("Please fill out all criteria.");
@@ -137,6 +166,7 @@ $(function() {
     })
   })
 
+  // show users beers on user show page request
   $('#show_user').on('click', 'a.show_user_beers', function(e) {
     e.preventDefault();
     $.ajax({
@@ -152,6 +182,23 @@ $(function() {
     })
   })
 
+  $('#show_user_beers').on('click', 'a.show-beer', function(e) {
+    e.preventDefault();
+    $.ajax({
+      type: "GET",
+      url: this.href,
+      dataType: 'json',
+      success: function(response) {
+        $('div#show_user').html('')
+        getBeer(response)
+      },
+      error: function(response) {
+        alert("Oops! Something went wrong!")
+      }
+    })
+  })
+
+  // show brewery's beers on brewery show page request
   $('#show_brewery').on('click', 'button.show_more', function(e) {
     e.preventDefault();
     $.ajax({
@@ -164,6 +211,22 @@ $(function() {
         debugger
         alert("Oops! Something went wrong!")
        }
+    })
+  })
+
+  // request to show form via add-beer button
+  $('#show_user').on('click', 'button#add-beer', function(e) {
+    e.preventDefault()
+
+    // add 'get' breweries for dropdown in form
+
+    $.ajax({
+      url: '/add_beer_form',
+      type: 'get',
+      success: function(response) {
+        $('#add-beer-form').html(response)
+        $('button#add-beer').html('')
+      }
     })
   })
 })
