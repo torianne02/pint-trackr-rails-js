@@ -1,7 +1,7 @@
 <ol>
   <% @beers.each do |beer| %>
     <li>
-      <h3><%= link_to "#{beer.name}", beer_path(beer.id) %></h3>
+      <h3><%= link_to "#{beer.name}", beer_path(beer.id), class: 'beer-link' %></h3>
       <p>Brewery: <%= link_to "#{beer.brewery.name}", brewery_path(beer.brewery.id) %></p>
       <p>Type of Beer: <%= beer.beer_type %></p>
       <p>IBU: <%= beer.ibu %></p>
