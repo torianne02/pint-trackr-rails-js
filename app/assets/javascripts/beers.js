@@ -13,8 +13,8 @@ class Beer {
 
 // html template for beer info
 Beer.prototype.beerInfoTemplate = function() {
-  return `<h3><a href="/beers/${this.id}", class="show-beer">${this.name}</a></h3>
-    <p><a href="/breweries/${this.brewery.id}", class="show-brewery">${this.brewery.name}</a></p>
+  return `<h3>${this.name}</h3>
+    <p>${this.brewery.name}</p>
     <p>Type of Beer: ${this.beerType}</p>
     <p>IBU: ${this.ibu}</p>
     <p>ABV: ${this.abv}</p>`
