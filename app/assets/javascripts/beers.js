@@ -93,6 +93,7 @@ function getUserBeers(data) {
   $ol.html(`${userBeersHTML}`)
 }
 
+// render brewery show page
 function getBrewery(data) {
   const breweryBeers = data
   const breweryShowHTML = ``
@@ -120,10 +121,10 @@ function showMoreBreweryBeers(data) {
 
 $(function() {
   // new beer request
-  $('#add-beer-form').on("submit", function(e) {
+  $('form#new_beer').on("submit", function(e) {
     e.preventDefault();
     $.ajax({
-      url: '/beers',
+      url: this.action,
       type: "POST",
       data: $(this).serialize(),
       success: function(response) {
@@ -231,6 +232,7 @@ $(function() {
         showMoreBreweryBeers(response)
       },
       error: function(response) {
+        console.log(response)
         alert("Oops! Something went wrong!")
        }
     })
