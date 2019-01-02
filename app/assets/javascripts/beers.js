@@ -121,14 +121,14 @@ function showMoreBreweryBeers(data) {
 
 $(function() {
   // new beer request
-  $('form#new_beer').on("submit", function(e) {
+  $('#add-beer-form').on("submit", 'form#new_beer.new_beer', function(e) {
     e.preventDefault();
     $.ajax({
       url: this.action,
       type: "POST",
       data: $(this).serialize(),
       success: function(response) {
-        clearForm();
+        clearForm()
         const $ol = $("div#show-user-beers ol")
         $ol.append(response);
       },

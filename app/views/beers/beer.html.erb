@@ -1,6 +1,6 @@
 <li>
-  <h3><%= link_to "#{@beer.name}", beer_path(@beer.id) %></h3>
-  <p>Brewery: <%= @beer.brewery.name %></p>
+  <h3><%= link_to "#{@beer.name}", beer_path(@beer.id), class: "show-beer" %></h3>
+  <p><%= link_to "#{@beer.brewery.name}", brewery_path(@brewery.id), class: "show-brewery" %></p>
   <p>Type of Beer: <%= @beer.beer_type %></p>
   <p>IBU: <%= @beer.ibu %></p>
   <p>ABV: <%= @beer.abv %></p>
