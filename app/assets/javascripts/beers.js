@@ -239,14 +239,14 @@ $(function() {
   })
 
   // request to show form via add-beer button
-  $('#show-user').on('click', 'button#add-beer', function(e) {
+  $('#add-beer-form').on('click', 'button#add-beer', function(e) {
     e.preventDefault()
     $.ajax({
       url: '/add_beer_form',
       type: 'GET',
       success: function(response) {
+        $('#add-beer-form').html('')
         $('#add-beer-form').html(response)
-        // remove button after click
       }
     })
   })

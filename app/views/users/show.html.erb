@@ -3,9 +3,8 @@
   <p>You have tried <%= @beers.count %> beers from <%= @breweries.count %> different breweries!</p>
 
   <div id="show-user-beers"><ol></ol></div>
-  <div id="add-beer-form"></div>
+  <div id="add-beer-form"><button id="add-beer">Add Beer</button></div>
 
-  <button id="add-beer">Add Beer</button><br>
   <%= link_to "View Your Beers", beers_url, class: "list-beers" %><br>
   <%= link_to "Update Account Info", edit_user_path(@user) %> | <%= link_to "Log Out", logout_path %>
 </div>
