@@ -52,7 +52,7 @@ class BeersController < ApplicationController
   end
 
   def add_beer_form
-    @beer = Beer.new
+    @beer = Beer.new(user_id: params[:user_id])
     @brewery = Brewery.new
     render partial: 'beers/form'
   end
