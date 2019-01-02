@@ -1,13 +1,15 @@
-<div id="show_user">
+<div id="show-user">
   <h2>Welcome, <%= @user.username %>!</h2>
   <p>You have tried <%= @beers.count %> beers from <%= @breweries.count %> different breweries!</p>
 
-  <div id="show_user_beers"><ol></ol></div>
+  <div id="show-user-beers"><ol></ol></div>
   <div id="add-beer-form"></div>
 
   <button id="add-beer">Add Beer</button><br>
-  <%= link_to "View Your Beers", beers_url, class: "show_user_beers" %><br>
+  <%= link_to "View Your Beers", beers_url, class: "list-beers" %><br>
   <%= link_to "Update Account Info", edit_user_path(@user) %> | <%= link_to "Log Out", logout_path %>
 </div>
 
-<div id="show_beer"></div>
+<div id="show-beer"></div>
+
+<div id="show-brewery"></div>
