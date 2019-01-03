@@ -163,6 +163,7 @@ $(function() {
       url: this.href,
       dataType: 'json',
       success: function(response) {
+        $('a.list-beers').html('')
         getUserBeers(response)
       },
       error: function(response) {
