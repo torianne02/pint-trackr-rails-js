@@ -3,6 +3,6 @@
   <p><%= link_to "#{@beer.brewery.name}", brewery_path(@brewery.id), class: "show-brewery" %></p>
   <p>Type of Beer: <%= @beer.beer_type %></p>
   <p>IBU: <%= @beer.ibu %></p>
-  <p>ABV: <%= @beer.abv %></p>
+  <p>ABV: <%= @beer.abv %>%</p>
   <p><%= link_to "Edit", edit_beer_path(@beer) %></p>
 </li>

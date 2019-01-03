@@ -17,7 +17,7 @@ Beer.prototype.beerListElementTemplate = function() {
     <p><a href="/breweries/${this.brewery.id}", class="show-brewery">${this.brewery.name}</a></p>
     <p>Type of Beer: ${this.beerType}</p>
     <p>IBU: ${this.ibu}</p>
-    <p>ABV: ${this.abv}</p></li>`
+    <p>ABV: ${this.abv}%</p></li>`
 }
 
 // html template for beer info
@@ -26,7 +26,7 @@ Beer.prototype.beerInfoTemplate = function() {
     <p>${this.brewery.name}</p>
     <p>Type of Beer: ${this.beerType}</p>
     <p>IBU: ${this.ibu}</p>
-    <p>ABV: ${this.abv}</p>`
+    <p>ABV: ${this.abv}%</p>`
 }
 
 // html template for brewery
