@@ -91,6 +91,7 @@ function getUserBeers(data) {
 
   const $ol = $('div#show-user-beers ol')
   $ol.html(`${userBeersHTML}`)
+  $('div#show-user-beers div#add-beer-form').html(`<button id="add-beer">Add Beer</button>`)
 }
 
 // render brewery show page
