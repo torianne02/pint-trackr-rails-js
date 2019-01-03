@@ -30,7 +30,7 @@ Beer.prototype.breweryTemplate = function() {
   return `<h3>${this.brewery.name}</h3>
   <ul>
     <li>${this.brewery.beers[0].name}</li>
-    <button class="show-more">Show More..</button>
+    <button class="show-more">Show More</button>
   </ul>`
 }
 
@@ -121,6 +121,19 @@ function showMoreBreweryBeers(data) {
 }
 
 $(function() {
+  // request to show form via add-beer button
+  $('#add-beer-form').on('click', 'button#add-beer', function(e) {
+    e.preventDefault()
+    $.ajax({
+      url: '/add_beer_form',
+      type: 'GET',
+      success: function(response) {
+        $('#add-beer-form').html('')
+        $('#add-beer-form').html(response)
+      }
+    })
+  })
+
   // new beer request
   $('#add-beer-form').on("submit", 'form#new_beer.new_beer', function(e) {
     e.preventDefault();
@@ -236,19 +249,6 @@ $(function() {
         console.log(response)
         alert("Oops! Something went wrong!")
        }
-    })
-  })
-
-  // request to show form via add-beer button
-  $('#add-beer-form').on('click', 'button#add-beer', function(e) {
-    e.preventDefault()
-    $.ajax({
-      url: '/add_beer_form',
-      type: 'GET',
-      success: function(response) {
-        $('#add-beer-form').html('')
-        $('#add-beer-form').html(response)
-      }
     })
   })
 })
