@@ -19,6 +19,10 @@ class UsersController < ApplicationController
   def show
     @beers = @user.beers
     @breweries = @user.breweries
+    respond_to do |format|
+      format.html
+      format.json { render json: @beers }
+    end
   end
 
   def edit
