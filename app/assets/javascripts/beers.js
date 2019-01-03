@@ -11,6 +11,15 @@ class Beer {
   }
 }
 
+// html template for beer list
+Beer.prototype.beerListElementTemplate = function() {
+  return `<li><h3><a href="/beers/${this.id}", class="show-beer">${this.name}</a></h3>
+    <p><a href="/breweries/${this.brewery.id}", class="show-brewery">${this.brewery.name}</a></p>
+    <p>Type of Beer: ${this.beerType}</p>
+    <p>IBU: ${this.ibu}</p>
+    <p>ABV: ${this.abv}</p></li>`
+}
+
 // html template for beer info
 Beer.prototype.beerInfoTemplate = function() {
   return `<h3>${this.name}</h3>
@@ -18,11 +27,6 @@ Beer.prototype.beerInfoTemplate = function() {
     <p>Type of Beer: ${this.beerType}</p>
     <p>IBU: ${this.ibu}</p>
     <p>ABV: ${this.abv}</p>`
-}
-
-// html template for brewery beer info
-Beer.prototype.breweryBeerInfoTemplate = function () {
-  return `<li>${this.name} | ${this.beerType}</li>`
 }
 
 // html template for brewery
@@ -34,13 +38,9 @@ Beer.prototype.breweryTemplate = function() {
   </ul>`
 }
 
-// html template for beer list
-Beer.prototype.beerListElementTemplate = function() {
-  return `<li><h3><a href="/beers/${this.id}", class="show-beer">${this.name}</a></h3>
-    <p><a href="/breweries/${this.brewery.id}", class="show-brewery">${this.brewery.name}</a></p>
-    <p>Type of Beer: ${this.beerType}</p>
-    <p>IBU: ${this.ibu}</p>
-    <p>ABV: ${this.abv}</p></li>`
+// html template for brewery beer info
+Beer.prototype.breweryBeerInfoTemplate = function () {
+  return `<li>${this.name} | ${this.beerType}</li>`
 }
 
 // clear form
@@ -50,6 +50,21 @@ const clearForm = () => {
   $("#beer_beer_type").val("");
   $("#beer_ibu").val("");
   $("#beer_abv").val("");
+}
+
+// render list of a user's beers
+function getUserBeers(data) {
+  const userBeers = data
+  var userBeersHTML = ``
+
+  for (i = 0; i < userBeers.length; i++) {
+    const beer = new Beer(userBeers[i])
+    userBeersHTML += beer.beerListElementTemplate()
+  }
+
+  const $ol = $('div#show-user-beers ol')
+  $ol.html(`${userBeersHTML}`)
+  $('div#show-user-beers div#add-beer-form').html(`<button id="add-beer">Add Beer</button>`)
 }
 
 // next/prev beer function
@@ -77,21 +92,6 @@ function getBeer(data) {
       <a href="/beers/${beer.id}/edit">Edit</a>
       <a href="/beers/${userBeers[findIndex+1].id}" class="next-beer">Next Beer</a>`)
   }
-}
-
-// render list of a user's beers
-function getUserBeers(data) {
-  const userBeers = data
-  var userBeersHTML = ``
-
-  for (i = 0; i < userBeers.length; i++) {
-    const beer = new Beer(userBeers[i])
-    userBeersHTML += beer.beerListElementTemplate()
-  }
-
-  const $ol = $('div#show-user-beers ol')
-  $ol.html(`${userBeersHTML}`)
-  $('div#show-user-beers div#add-beer-form').html(`<button id="add-beer">Add Beer</button>`)
 }
 
 // render brewery show page
@@ -130,6 +130,9 @@ $(function() {
       success: function(response) {
         $('#add-beer-form').html('')
         $('#add-beer-form').html(response)
+      },
+      error: function(response) {
+        alert("Oops! Something went wrong!")
       }
     })
   })
