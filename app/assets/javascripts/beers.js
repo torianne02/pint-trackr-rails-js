@@ -33,7 +33,7 @@ Beer.prototype.beerInfoTemplate = function() {
 Beer.prototype.breweryTemplate = function() {
   return `<h3>${this.brewery.name}</h3>
   <ul>
-    <li>${this.brewery.beers[0].name}</li>
+    <li>${this.brewery.beers[0].name} | ${this.brewery.beers[0].beer_type}</li>
     <a href="/breweries/${this.brewery.id}" class="show-more">Show More</a>
   </ul>`
 }
