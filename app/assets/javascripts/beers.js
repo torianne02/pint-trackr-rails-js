@@ -55,14 +55,14 @@ const clearForm = () => {
 // render list of a user's beers
 function getUserBeers(data) {
   const userBeers = data
-  var userBeersHTML = ``
+  let userBeersHTML = ``
 
   for (i = 0; i < userBeers.length; i++) {
     const beer = new Beer(userBeers[i])
     userBeersHTML += beer.beerListElementTemplate()
   }
 
-  const $ol = $('div#show-user-beers ol')
+  let $ol = $('div#show-user-beers ol')
   $ol.html(`${userBeersHTML}`)
   $('div#show-user-beers div#add-beer-form').html(`<button id="add-beer">Add Beer</button>`)
 }
@@ -70,10 +70,10 @@ function getUserBeers(data) {
 // next/prev beer function
 function getBeer(data) {
   const beer = new Beer(data)
-  var userBeers = beer.user.beers
+  let userBeers = beer.user.beers
 
   // locate index of beer
-  var findIndex = userBeers.map(function(e) {return e.id}).indexOf(beer.id)
+  let findIndex = userBeers.map(function(e) {return e.id}).indexOf(beer.id)
 
   $('div#show-beer').html("")
 
@@ -97,7 +97,7 @@ function getBeer(data) {
 // render brewery show page
 function getBrewery(data) {
   const breweryBeers = data
-  const breweryShowHTML = ``
+  let breweryShowHTML = ``
 
   const beer = new Beer(breweryBeers[0])
   const brewery = beer.brewery
@@ -109,7 +109,7 @@ function getBrewery(data) {
 // render list of a brewery's beers
 function showMoreBreweryBeers(data) {
   const breweryBeers = data
-  var breweryListHTML = ``
+  let breweryListHTML = ``
 
   for (i = 0; i < breweryBeers.length; i++) {
     const beer = new Beer(breweryBeers[i])
@@ -146,7 +146,7 @@ $(function() {
       data: $(this).serialize(),
       success: function(response) {
         clearForm()
-        const $ol = $("div#show-user-beers ol")
+        let $ol = $("div#show-user-beers ol")
         $ol.append(response);
       },
       error: function(response) {
