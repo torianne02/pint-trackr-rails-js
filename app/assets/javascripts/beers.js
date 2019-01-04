@@ -100,8 +100,7 @@ function getBrewery(data) {
   let breweryShowHTML = ``
 
   const beer = new Beer(breweryBeers[0])
-  const brewery = beer.brewery
-
+  
   $('div#show-brewery').html("")
   $('div#show-brewery').html(`${beer.breweryTemplate()}`)
 }
