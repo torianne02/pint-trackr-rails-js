@@ -64,6 +64,8 @@ function getUserBeers(data) {
 
   let $ol = $('div#show-user-beers ol')
   $ol.html(`${userBeersHTML}`)
+
+  $('div#show-user-beers div#sort-button').html('<button id="sort-beer" href="/beers">Sort Beer</button>')
   $('div#show-user-beers div#add-beer-form').html(`<button id="add-beer">Add Beer</button>`)
 }
 
@@ -98,9 +100,8 @@ function getBeer(data) {
 function getBrewery(data) {
   const breweryBeers = data
   let breweryShowHTML = ``
-
   const beer = new Beer(breweryBeers[0])
-  
+
   $('div#show-brewery').html("")
   $('div#show-brewery').html(`${beer.breweryTemplate()}`)
 }
@@ -246,6 +247,33 @@ $(function() {
       dataType: 'json',
       success: function(response) {
         showMoreBreweryBeers(response)
+      },
+      error: function(response) {
+        console.log(response)
+        alert("Oops! Something went wrong!")
+       }
+    })
+  })
+
+  $('#show-user').on('click', 'button#sort-beer', function(e) {
+    e.preventDefault();
+    $.ajax({
+      type: "GET",
+      url: $(this).attr('href'),
+      dataType: 'json',
+      success: function(response) {
+        const sortedBeers = response.sort(function(a, b) {
+          if (b.abv != a.abv) {
+            return b.abv - a.abv
+          }
+          const x = a.name.toLowerCase();
+          const y = b.name.toLowerCase();
+          if (x < y) {return -1;}
+          if (x > y) {return 1;}
+          return 0
+        });
+        getUserBeers(sortedBeers)
+        $('#sort-button').html('')
       },
       error: function(response) {
         console.log(response)
