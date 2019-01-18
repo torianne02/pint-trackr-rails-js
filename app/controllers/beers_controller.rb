@@ -1,9 +1,8 @@
 class BeersController < ApplicationController
-  before_action :set_user
   before_action :set_beer, only: %i[show edit update destroy]
 
   def index
-    @beers = @user.beers
+    @beers = @current_user.beers
     respond_to do |format|
       format.html
       format.json { render json: @beers }
@@ -19,7 +18,7 @@ class BeersController < ApplicationController
     @brewery = Brewery.find_or_create_by(beer_params[:brewery_attributes])
     @beer = Beer.create(beer_params)
     @beer.brewery_id = @brewery.id
-    @beer.user = @user
+    @beer.user = @current_user
     if @beer.save
       render 'beers/beer', layout: false
     else
@@ -39,7 +38,7 @@ class BeersController < ApplicationController
   end
 
   def show
-    @user_beers = @user.beers
+    @user_beers = @current_user.beers
     respond_to do |format|
       format.html
       format.json { render json: @beer = @user_beers[@user_beers.index(@beer)]}
@@ -58,10 +57,6 @@ class BeersController < ApplicationController
   end
 
   private
-
-  def set_user
-    @user = User.find(session[:user_id])
-  end
 
   def set_beer
     @beer = Beer.find(params[:id])
