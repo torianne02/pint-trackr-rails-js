@@ -7,10 +7,10 @@
 
     <%= stylesheet_link_tag    'application' %>
     <%= javascript_include_tag 'application' %>
-    <nav align="right">
+    <nav class="nav justify-content-end">
       <% if current_user %>
-        <%= link_to "Profile", user_path(current_user.id) %> |
-        <%= link_to "Log Out", logout_path %>
+        <%= link_to "Profile", user_path(current_user.id), class: "nav-link"%>
+        <%= link_to "Log Out", logout_path, class: "nav-link" %>
       <% end %>
     </nav>
   </head>
