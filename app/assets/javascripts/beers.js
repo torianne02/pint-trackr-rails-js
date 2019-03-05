@@ -13,7 +13,7 @@ class Beer {
 
 // html template for beer list
 Beer.prototype.beerListElementTemplate = function() {
-  return `<li><h3><a href="/beers/${this.id}", class="show-beer">${this.name}</a></h3>
+  return `<li><h5><a href="/beers/${this.id}", class="show-beer">${this.name}</a></h5>
     <p><a href="/breweries/${this.brewery.id}", class="show-brewery">${this.brewery.name}</a></p>
     <p>Type of Beer: ${this.beerType}</p>
     <p>IBU: ${this.ibu}</p>
@@ -22,7 +22,7 @@ Beer.prototype.beerListElementTemplate = function() {
 
 // html template for beer info
 Beer.prototype.beerInfoTemplate = function() {
-  return `<h3>${this.name}</h3>
+  return `<h4>${this.name}</h4>
     <p>${this.brewery.name}</p>
     <p>Type of Beer: ${this.beerType}</p>
     <p>IBU: ${this.ibu}</p>
@@ -65,8 +65,8 @@ function getUserBeers(data) {
   let $ol = $('div#show-user-beers ol')
   $ol.html(`${userBeersHTML}`)
 
-  $('div#show-user-beers div#sort-button').html('<button id="sort-beer" href="/beers">Sort Beer</button>')
-  $('div#show-user-beers div#add-beer-form').html(`<button id="add-beer">Add Beer</button>`)
+  $('div#show-user-beers div#sort-button').html('<button type="button" class="btn btn-outline-secondary" id="sort-beer" href="/beers">Sort Beer</button>')
+  $('div#show-user-beers div#add-beer-form').html(`<button type="button" class="btn btn-outline-secondary" id="add-beer">Add Beer</button>`)
 }
 
 // next/prev beer function
