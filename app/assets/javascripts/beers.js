@@ -34,7 +34,7 @@ Beer.prototype.breweryTemplate = function() {
   return `<h3>${this.brewery.name}</h3>
   <ul class="list-group">
     <li class="list-group-item">${this.brewery.beers[0].name} | ${this.brewery.beers[0].beer_type}</li>
-    <a href="/breweries/${this.brewery.id}" class="show-more">Show More</a>
+    <a href="/breweries/${this.brewery.id}" id="show-more" class="btn btn-outline-secondary">Show More</a>
   </ul>`
 }
 
@@ -239,7 +239,7 @@ $(function() {
   })
 
   // show brewery's beers on user show page request
-  $('#show-brewery').on('click', 'a.show-more', function(e) {
+  $('#show-brewery').on('click', 'a#show-more', function(e) {
     e.preventDefault();
     $.ajax({
       type: "GET",
