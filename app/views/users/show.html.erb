@@ -6,11 +6,12 @@
     <ul class="list-group"></ul>
     <div class="btn-group" role="group" aria-label="Basic example">
       <div id="add-beer-form"></div>
-      <div id='sort-button'></div>
+      <div id="sort-button"></div>
     </div>
   </div>
-
-  <%= link_to "View Your Beers", beers_url, id: "list-beers", class: "btn btn-outline-secondary" %><br>
+  <div class="list-beers-container">
+    <%= link_to "View Your Beers", beers_url, id: "list-beers", class: "btn btn-outline-secondary" %>
+  </div>
 </div>
 
 <div id="show-beer"></div>

@@ -156,14 +156,14 @@ $(function() {
   })
 
   // show list of users beers on user show page request
-  $('#show-user').on('click', 'a.list-beers', function(e) {
+  $('#show-user').on('click', 'a#list-beers', function(e) {
     e.preventDefault();
     $.ajax({
       type: "GET",
       url: this.href,
       dataType: 'json',
       success: function(response) {
-        $('a.list-beers').html('')
+        $('.list-beers-container').html('')
         getUserBeers(response)
       },
       error: function(response) {
