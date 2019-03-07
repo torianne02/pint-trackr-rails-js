@@ -31,7 +31,7 @@ class BeersController < ApplicationController
 
   def update
     if @beer.update(beer_params)
-      redirect_to beers_url, notice: "Beer successfully updated."
+      redirect_to user_path(@current_user), notice: "Beer successfully updated."
     else
       render :edit
     end
