@@ -1,17 +1,19 @@
-<h1>Log In</h1>
+<h3>Log In</h3>
 
 <%= link_to('Log in with Facebook!', '/auth/facebook') %>
 <br>
 
 <%= form_tag({ controller: 'sessions', action: 'create', method: 'post' }) do %>
 
-  <%= label_tag :username %>
-  <%= text_field_tag :username %>
-  <br>
+  <div class="form-group">
+    <%= label_tag :username %>
+    <%= text_field_tag :username %>
+  </div>
 
-  <%= label_tag :password %>
-  <%= password_field_tag :password %>
-  <br>
+  <div class="form-group">
+    <%= label_tag :password %>
+    <%= password_field_tag :password %>
+  </div>
 
-  <%= submit_tag 'Sign In' %>
+  <%= submit_tag 'Sign In', class: "btn btn-outline-secondary" %>
 <% end %>
