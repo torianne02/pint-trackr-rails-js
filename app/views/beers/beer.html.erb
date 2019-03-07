@@ -1,8 +1,7 @@
-<li>
-  <h3><%= link_to "#{@beer.name}", beer_path(@beer.id), class: "show-beer" %></h3>
+<li class="list-group-item">
+  <h5><%= link_to "#{@beer.name}", beer_path(@beer.id), class: "show-beer" %></h5>
   <p><%= link_to "#{@beer.brewery.name}", brewery_path(@brewery.id), class: "show-brewery" %></p>
   <p>Type of Beer: <%= @beer.beer_type %></p>
   <p>IBU: <%= @beer.ibu %></p>
   <p>ABV: <%= @beer.abv %>%</p>
-  <p><%= link_to "Edit", edit_beer_path(@beer) %></p>
 </li>
