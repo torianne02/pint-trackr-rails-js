@@ -82,17 +82,17 @@ function getBeer(data) {
   // conditional statement for buttons and html
   if (findIndex === 0) {
     $('div#show-beer').html(`${beer.beerInfoTemplate()}
-      <a href="/beers/${beer.id}/edit">Edit</a>
-      <a href="/beers/${userBeers[findIndex+1].id}" class="next-beer">Next Beer</a>`)
+      <a href="/beers/${beer.id}/edit" class="btn btn-outline-secondary">Edit</a>
+      <a href="/beers/${userBeers[findIndex+1].id}" class="btn btn-outline-secondary" id="next-beer">Next Beer</a>`)
   } else if (findIndex === userBeers.length - 1) {
     $('div#show-beer').html(`${beer.beerInfoTemplate()}
-      <a href="/beers/${userBeers[findIndex-1].id}" class="prev-beer">Previous Beer</a>
-      <a href="/beers/${beer.id}/edit">Edit</a>`)
+      <a href="/beers/${userBeers[findIndex-1].id}" class="btn btn-outline-secondary" id="prev-beer">Previous Beer</a>
+      <a href="/beers/${beer.id}/edit" class="btn btn-outline-secondary">Edit</a>`)
   } else {
     $('div#show-beer').html(`${beer.beerInfoTemplate()}
-      <a href="/beers/${userBeers[findIndex-1].id}" class="prev-beer">Previous Beer</a>
-      <a href="/beers/${beer.id}/edit">Edit</a>
-      <a href="/beers/${userBeers[findIndex+1].id}" class="next-beer">Next Beer</a>`)
+      <a href="/beers/${userBeers[findIndex-1].id}" class="btn btn-outline-secondary" id="prev-beer">Previous Beer</a>
+      <a href="/beers/${beer.id}/edit" class="btn btn-outline-secondary">Edit</a>
+      <a href="/beers/${userBeers[findIndex+1].id}" class="btn btn-outline-secondary" id="next-beer">Next Beer</a>`)
   }
 }
 
@@ -190,7 +190,7 @@ $(function() {
   })
 
   // show next beer request
-  $('#show-beer').on('click', 'a.next-beer', function(e) {
+  $('#show-beer').on('click', 'a#next-beer', function(e) {
     e.preventDefault();
     $.ajax({
       type: "GET",
@@ -206,7 +206,7 @@ $(function() {
   })
 
   // show previous beer request
-  $('#show-beer').on('click', 'a.prev-beer', function(e) {
+  $('#show-beer').on('click', 'a#prev-beer', function(e) {
     e.preventDefault();
     $.ajax({
       type: "GET",
