@@ -32,15 +32,15 @@ Beer.prototype.beerInfoTemplate = function() {
 // html template for brewery
 Beer.prototype.breweryTemplate = function() {
   return `<h3>${this.brewery.name}</h3>
-  <ul>
-    <li>${this.brewery.beers[0].name} | ${this.brewery.beers[0].beer_type}</li>
+  <ul class="list-group">
+    <li class="list-group-item">${this.brewery.beers[0].name} | ${this.brewery.beers[0].beer_type}</li>
     <a href="/breweries/${this.brewery.id}" class="show-more">Show More</a>
   </ul>`
 }
 
 // html template for brewery beer info
 Beer.prototype.breweryBeerInfoTemplate = function () {
-  return `<li>${this.name} | ${this.beerType}</li>`
+  return `<li class="list-group-item">${this.name} | ${this.beerType}</li>`
 }
 
 // clear form
