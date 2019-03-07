@@ -13,7 +13,7 @@ class Beer {
 
 // html template for beer list
 Beer.prototype.beerListElementTemplate = function() {
-  return `<li><h5><a href="/beers/${this.id}", class="show-beer">${this.name}</a></h5>
+  return `<li class="list-group-item"><h5><a href="/beers/${this.id}", class="show-beer">${this.name}</a></h5>
     <p><a href="/breweries/${this.brewery.id}", class="show-brewery">${this.brewery.name}</a></p>
     <p>Type of Beer: ${this.beerType}</p>
     <p>IBU: ${this.ibu}</p>
@@ -62,8 +62,8 @@ function getUserBeers(data) {
     userBeersHTML += beer.beerListElementTemplate()
   }
 
-  let $ol = $('div#show-user-beers ol')
-  $ol.html(`${userBeersHTML}`)
+  let $ul = $('div#show-user-beers ul')
+  $ul.html(`${userBeersHTML}`)
 
   $('div#show-user-beers div#sort-button').html('<button type="button" class="btn btn-outline-secondary" id="sort-beer" href="/beers">Sort Beer</button>')
   $('div#show-user-beers div#add-beer-form').html(`<button type="button" class="btn btn-outline-secondary" id="add-beer">Add Beer</button>`)
@@ -146,8 +146,8 @@ $(function() {
       data: $(this).serialize(),
       success: function(response) {
         clearForm()
-        let $ol = $("div#show-user-beers ol")
-        $ol.append(response);
+        let $ul = $("div#show-user-beers ul")
+        $ul.append(response);
       },
       error: function(response) {
         alert("Please fill out all criteria.");
