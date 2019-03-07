@@ -10,7 +10,7 @@
     <nav class="nav justify-content-end">
       <% if current_user %>
         <%= link_to "Profile", user_path(current_user.id), class: "nav-link" %>
-        <%= link_to "Update User Info", edit_user_path(current_user.id), class: "nav-link" %>
+        <%= link_to "Update My Info", edit_user_path(current_user.id), class: "nav-link" %>
         <%= link_to "Log Out", logout_path, class: "nav-link" %>
       <% end %>
     </nav>
