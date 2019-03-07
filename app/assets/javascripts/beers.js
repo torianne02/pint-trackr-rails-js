@@ -255,6 +255,7 @@ $(function() {
     })
   })
 
+  // sorts beers by alcohol percentage - task assigned during live coding
   $('#show-user').on('click', 'button#sort-beer', function(e) {
     e.preventDefault();
     $.ajax({
