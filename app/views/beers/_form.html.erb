@@ -1,33 +1,31 @@
-<form>
-  <%= form_for(@beer) do |f| %>
+<%= form_for(@beer) do |f| %>
 
-    <div class="form-group">
-      <label>Name:</label>
-      <%= f.text_field :name %>
-    </div>
+  <div class="form-group">
+    <label>Name:</label>
+    <%= f.text_field :name %>
+  </div>
 
-    <div class="form-group">
-      <%= f.fields_for :brewery, @brewery do |b_field| %>
-        <label>Brewery Name:</label>
-        <%= b_field.text_field :name %>
-      <% end %>
-    </div>
+  <div class="form-group">
+    <%= f.fields_for :brewery, @brewery do |b_field| %>
+      <label>Brewery Name:</label>
+      <%= b_field.text_field :name %>
+    <% end %>
+  </div>
 
-    <div class="form-group">
-      <label>Type of Beer:</label>
-      <%= f.text_field :beer_type %>
-    </div>
+  <div class="form-group">
+    <label>Type of Beer:</label>
+    <%= f.text_field :beer_type %>
+  </div>
 
-    <div class="form-group">
-      <label>IBU:</label>
-      <%= f.text_field :ibu %>
-    </div>
+  <div class="form-group">
+    <label>IBU:</label>
+    <%= f.text_field :ibu %>
+  </div>
 
-    <div class="form-group">
-      <label>ABV:</label>
-      <%= f.text_field :abv %>
-    </div>
+  <div class="form-group">
+    <label>ABV:</label>
+    <%= f.text_field :abv %>
+  </div>
 
-    <%= f.submit class: "btn btn-outline-secondary" %>
-  <% end %>
-</form>
+  <%= f.submit class: "btn btn-outline-secondary" %>
+<% end %>
