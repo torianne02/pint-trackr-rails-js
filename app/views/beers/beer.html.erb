@@ -1,6 +1,6 @@
 <li class="list-group-item">
-  <h5><%= link_to "#{@beer.name}", beer_path(@beer.id), class: "show-beer" %></h5>
-  <p><%= link_to "#{@beer.brewery.name}", brewery_path(@brewery.id), class: "show-brewery" %></p>
+  <h5><%= link_to "#{@beer.name}", beer_path(@beer.id), class: "show-beer", style: 'color: #000000;' %></h5>
+  <p><%= link_to "#{@beer.brewery.name}", brewery_path(@brewery.id), class: "show-brewery", style: 'color: #000000;' %></p>
   <p>Type of Beer: <%= @beer.beer_type %></p>
   <p>IBU: <%= @beer.ibu %></p>
   <p>ABV: <%= @beer.abv %>%</p>
