@@ -13,8 +13,8 @@ class Beer {
 
 // html template for beer list
 Beer.prototype.beerListElementTemplate = function() {
-  return `<li class="list-group-item"><h5><a href="/beers/${this.id}", class="show-beer">${this.name}</a></h5>
-    <p><a href="/breweries/${this.brewery.id}", class="show-brewery">${this.brewery.name}</a></p>
+  return `<li class="list-group-item"><h5><a href="/beers/${this.id}", class="show-beer", style='color: #000000;'>${this.name}</a></h5>
+    <p><a href="/breweries/${this.brewery.id}", class="show-brewery", style='color: #000000;'>${this.brewery.name}</a></p>
     <p>Type of Beer: ${this.beerType}</p>
     <p>IBU: ${this.ibu}</p>
     <p>ABV: ${this.abv}%</p></li>`
